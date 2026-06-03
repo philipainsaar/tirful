@@ -55,7 +55,7 @@ function NeonSun() {
         emissive="#00bbff"
         emissiveIntensity={3.2}
         transparent
-        opacity={0.42}
+        opacity={0.00}
       />
     </mesh>
   );
@@ -73,7 +73,7 @@ function NeonScene() {
   );
 }
 
-function Typewriter({ lines, speed = 18 }) {
+function Typewriter({ lines, speed = 32 }) {
   const [text, setText] = useState("");
 
   useEffect(() => {
@@ -157,8 +157,8 @@ function DosWindow() {
         <button className="winButton" aria-label="menu" />
         <span>MICROSOFT DOS 3.1 - NEON.EXE</span>
         <div className="winControls">
-          <span>□</span>
-          <span>×</span>
+          <span></span>
+          <span></span>
         </div>
       </div>
 
