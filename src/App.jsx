@@ -99,8 +99,14 @@ export default function App() {
       </div>
 
       <header className="logoWrap">
-        <img src={logoImage} alt="Logo" className="topLogo" />
-      </header>
+          <img src={logoImage} alt="Logo" className="topLogo" />
+
+            <div className="logoGlitchScratch">
+                <span />
+                    <span />
+                        <span />
+                          </div>
+                          </header>
 
       <section className="terminal">
         <div className="top">
