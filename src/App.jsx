@@ -40,7 +40,7 @@ function BlueGlow() {
         emissive="#00aaff"
         emissiveIntensity={2.8}
         transparent
-        opacity={0.35}
+        opacity={0.00}
       />
     </mesh>
   );
