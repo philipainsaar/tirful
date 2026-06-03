@@ -2,7 +2,7 @@ import React from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import "./style.css";
 
-const backgroundImage = "/backgrounds/dos-bg.png";
+const backgroundImage = "/backgrounds/bg.gif";
 const logoImage = "/images/logo.png";
 
 function NeonGrid() {
