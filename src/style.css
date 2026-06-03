@@ -60,7 +60,6 @@ body,
                                                                                       }
 
                                                                                       /* Top Logo */
-
                                                                                                   .logoWrap {
                                                                                                       position: fixed;
                                                                                                         top: max(35px, env(safe-area-inset-top));
@@ -126,7 +125,6 @@ body,
                                                                                                                                                                                                       opacity: 0;
                                                                                                                                                                                                         }
                                                                                                                                                                                                         }
-                                                                                                  }
 
                                                                                                   .topLogo {
                                                                                                     width: min(62vw, 420px);
