@@ -29,13 +29,13 @@ function NeonOrb() {
 
   useFrame(({ clock }) => {
     if (!orbRef.current) return;
-    const pulse = 1 + Math.sin(clock.elapsedTime * 1.8) * 0.06;
+    const pulse = 1 + Math.sin(clock.elapsedTime * 1.0) * 0.06;
     orbRef.current.scale.set(pulse, pulse, pulse);
   });
 
   return (
-    <mesh ref={orbRef} position={[0, 0.8, -6]}>
-      <sphereGeometry args={[1.65, 64, 64]} />
+    <mesh ref={orbRef} position={[0, 0.8, -3]}>
+      <sphereGeometry args={[1.65, 32, 32]} />
       <meshBasicMaterial
         wireframe
           color="#00aaff"
