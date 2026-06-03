@@ -2,295 +2,428 @@ html,
 body,
 #root {
   margin: 0;
-    width: 100%;
-      height: 100%;
-        font-family: "Courier New", monospace;
-          background: #020818;
-            overflow: hidden;
-            }
+  width: 100%;
+  height: 100%;
+  font-family: "Courier New", monospace;
+  background: #020818;
+  overflow: hidden;
+}
 
-            /* Main page */
-            .page {
-              width: 100vw;
-                min-height: 100svh;
-                  position: relative;
-                    overflow: hidden;
-                      display: grid;
-                        place-items: center;
-                          background-color: #020818;
-                          }
+.page {
+  width: 100vw;
+  min-height: 100svh;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background-color: #020818;
+}
 
-                          /* Background image layer */
-                          .imageBackground {
-                            position: fixed;
-                              inset: 0;
-                                z-index: 0;
-                                  background-color: #020818;
-                                    background-size: cover;
-                                      background-position: center;
-                                        background-repeat: no-repeat;
-                                        }
+.imageBackground {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: #020818;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-                                        .imageBackground::after {
-                                          display: none;
-                                          content: "";
-                                            position: absolute;
-                                              inset: 0;
-                                                background:
-                                                    radial-gradient(circle, #005dff44, rgba(2, 8, 24, 0.88) 75%),
-                                                        linear-gradient(
-                                                              rgba(0, 4, 20, 0.15),
-                                                                    rgba(0, 3, 16, 0.76)
-                                                                        );
-                                                                          pointer-events: none;
-                                                                          }
+.imageBackground::after {
+  display: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
 
-                                                                          /* Three.js layer */
-                                                                          .threeLayer {
-                                                                            position: fixed;
-                                                                              inset: 0;
-                                                                                z-index: 1;
-                                                                                  pointer-events: none;
-                                                                                    background: transparent !important;
-                                                                                    }
+.threeLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: transparent !important;
+}
 
-                                                                                    .threeLayer canvas,
-                                                                                    .threeCanvas {
-                                                                                      background: transparent !important;
-                                                                                      }
+.threeLayer canvas,
+.threeCanvas {
+  background: transparent !important;
+}
 
-                                                                                      /* Top Logo */
-                                                                                                  .logoWrap {
-                                                                                                      position: fixed;
-                                                                                                        top: max(35px, env(safe-area-inset-top));
-                                                                                                          left: 50%;
-                                                                                                            transform: translateX(-50%);
-                                                                                                              z-index: 3;
-                                                                                                                pointer-events: none;
-                                                                                                                }
+.logoWrap {
+  position: fixed;
+  top: max(35px, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  pointer-events: none;
+}
 
-                                                                                                                .logoGlitchScratch {
-                                                                                                                  position: absolute;
-                                                                                                                    inset: -12px;
-                                                                                                                      overflow: hidden;
-                                                                                                                        mix-blend-mode: screen;
-                                                                                                                          opacity: 0.9;
-                                                                                                                          }
+.logoGlitchScratch {
+  position: absolute;
+  inset: -12px;
+  overflow: hidden;
+  mix-blend-mode: screen;
+  opacity: 0.9;
+}
 
-                                                                                                                          .logoGlitchScratch span {
-                                                                                                                            position: absolute;
-                                                                                                                              left: -20%;
-                                                                                                                                width: 140%;
-                                                                                                                                  height: 2px;
-                                                                                                                                    background: #bff8ff;
-                                                                                                                                      box-shadow:
-                                                                                                                                          0 0 8px #00ccff,
-                                                                                                                                              0 0 18px #0077ff;
-                                                                                                                                                animation: scratchGlitch 0.55s steps(2) infinite;
-                                                                                                                                                }
+.logoGlitchScratch span {
+  position: absolute;
+  left: -20%;
+  width: 140%;
+  height: 2px;
+  background: #bff8ff;
+  box-shadow:
+    0 0 8px #00ccff,
+    0 0 18px #0077ff;
+  animation: scratchGlitch 0.55s steps(2) infinite;
+}
 
-                                                                                                                                                .logoGlitchScratch span:nth-child(1) {
-                                                                                                                                                  top: 22%;
-                                                                                                                                                    animation-delay: 0s;
-                                                                                                                                                    }
+.logoGlitchScratch span:nth-child(1) {
+  top: 22%;
+  animation-delay: 0s;
+}
 
-                                                                                                                                                    .logoGlitchScratch span:nth-child(2) {
-                                                                                                                                                      top: 51%;
-                                                                                                                                                        height: 1px;
-                                                                                                                                                          animation-delay: 0.17s;
-                                                                                                                                                          }
+.logoGlitchScratch span:nth-child(2) {
+  top: 51%;
+  height: 1px;
+  animation-delay: 0.17s;
+}
 
-                                                                                                                                                          .logoGlitchScratch span:nth-child(3) {
-                                                                                                                                                            top: 74%;
-                                                                                                                                                              animation-delay: 0.31s;
-                                                                                                                                                              }
+.logoGlitchScratch span:nth-child(3) {
+  top: 74%;
+  animation-delay: 0.31s;
+}
 
-                                                                                                                                                              @keyframes scratchGlitch {
-                                                                                                                                                                0% {
-                                                                                                                                                                    transform: translateX(-120%) skewX(-18deg);
-                                                                                                                                                                        opacity: 0;
-                                                                                                                                                                          }
+.topLogo {
+  width: min(62vw, 420px);
+  height: auto;
+  display: block;
+  filter:
+    drop-shadow(0 0 10px #00aaff)
+    drop-shadow(0 0 25px #0077ff)
+    drop-shadow(0 0 50px #005dff);
+  animation:
+    logoGlow 3s ease-in-out infinite,
+    logoJitter 0.18s steps(2) infinite;
+}
 
-                                                                                                                                                                            18% {
-                                                                                                                                                                                opacity: 1;
-                                                                                                                                                                                  }
+.terminal {
+  z-index: 2;
+  width: 88vw;
+  max-width: 760px;
+  min-height: 620px;
+  background: #000c23dd;
+  border: 2px solid #00aaff;
+  color: #7de8ff;
+  text-shadow: 0 0 8px #00ccff;
+  box-shadow:
+    0 0 25px #008cff,
+    0 0 70px #0055ff,
+    inset 0 0 35px #00aaff66;
+  backdrop-filter: blur(3px);
+}
 
-                                                                                                                                                                                    45% {
-                                                                                                                                                                                        transform: translateX(120%) skewX(-18deg);
-                                                                                                                                                                                            opacity: 0.9;
-                                                                                                                                                                                              }
+.top {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #003d7a, #0077ff);
+  color: white;
+  padding: 10px 14px;
+  font-weight: bold;
+}
 
-                                                                                                                                                                                                46%,
-                                                                                                                                                                                                  100% {
-                                                                                                                                                                                                      opacity: 0;
-                                                                                                                                                                                                        }
-                                                                                                                                                                                                        }
+.screen {
+  padding: 22px;
+  font-size: clamp(14px, 2.25vw, 20px);
+  line-height: 1.35;
+  min-height: 560px;
+  box-sizing: border-box;
+}
 
-                                                                                              .topLogo {
-                                                                                                  width: min(62vw, 420px);
-                                                                                                    height: auto;
-                                                                                                      display: block;
-                                                                                                        filter:
-                                                                                                            drop-shadow(0 0 10px #00aaff)
-                                                                                                                drop-shadow(0 0 25px #0077ff)
-                                                                                                                    drop-shadow(0 0 50px #005dff);
-                                                                                                                      animation:
-                                                                                                                          logoGlow 3s ease-in-out infinite,
-                                                                                                                              logoJitter 0.18s steps(2) infinite;
-                                                                                                                              }
+.screen p,
+p {
+  margin: 0;
+}
 
-                                                                                                                              @keyframes logoJitter {
-                                                                                                                                0%,
-                                                                                                                                  92%,
-                                                                                                                                    100% {
-                                                                                                                                        transform: translate(0, 0);
-                                                                                                                                          }
+.blink {
+  animation: blink 0.8s infinite;
+}
 
-                                                                                                                                            94% {
-                                                                                                                                                transform: translate(-2px, 1px);
-                                                                                                                                                  }
+.albumPage {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
 
-                                                                                                                                                    96% {
-                                                                                                                                                        transform: translate(2px, -1px);
-                                                                                                                                                          }
+.albumIntro {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding-bottom: 8px;
+  background: linear-gradient(#000c23, rgba(0, 12, 35, 0));
+}
 
-                                                                                                                                                            98% {
-                                                                                                                                                                transform: translate(-1px, -1px);
-                                                                                                                                                                  }
-                                                                                                                                                                  }
-                                                                                              
+.albumHeader {
+  color: #ffffff;
+  text-shadow:
+    0 0 8px #00ccff,
+    0 0 18px #0077ff;
+}
 
-                                                                                                                        @keyframes logoGlow {
-                                                                                                                          0%,
-                                                                                                                            100% {
-                                                                                                                                transform: translateY(0) scale(1);
-                                                                                                                                    opacity: 0.94;
-                                                                                                                                      }
+.albumSub {
+  opacity: 0.82;
+  font-size: 0.82em;
+}
 
-                                                                                                                                        50% {
-                                                                                                                                            transform: translateY(-6px) scale(1.025);
-                                                                                                                                                opacity: 1;
-                                                                                                                                                  }
-                                                                                                                                                  }
+.playerBox {
+  border: 1px solid rgba(0, 170, 255, 0.8);
+  background: rgba(0, 13, 38, 0.92);
+  box-shadow:
+    0 0 18px rgba(0, 170, 255, 0.4),
+    inset 0 0 18px rgba(0, 170, 255, 0.16);
+  padding: 10px;
+}
 
-                                                                                                                                                  /* DOS Window */
-                                                                                                                                                  .terminal {
-                                                                                                                                                    z-index: 2;
-                                                                                                                                                      width: 88vw;
-                                                                                                                                                        max-width: 760px;
+.playerTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: white;
+  font-size: 0.78em;
+  margin-bottom: 8px;
+}
 
-                                                                                                                                                          background: #000c23dd;
+.playerTop a {
+  color: #7de8ff;
+  text-decoration: none;
+}
 
-                                                                                                                                                            border: 2px solid #00aaff;
+.playerStatus {
+  font-size: 0.78em;
+  color: #ffffff;
+}
 
-                                                                                                                                                              color: #7de8ff;
+.bandcampPlayer {
+  width: 100%;
+  height: 120px;
+  border: 0;
+  display: block;
+  background: #001122;
+}
 
-                                                                                                                                                                text-shadow:
-                                                                                                                                                                    0 0 8px #00ccff;
+.albumList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 365px;
+  overflow-y: auto;
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #00aaff #001a33;
+}
 
-                                                                                                                                                                      box-shadow:
-                                                                                                                                                                          0 0 25px #008cff,
-                                                                                                                                                                              0 0 70px #0055ff,
-                                                                                                                                                                                  inset 0 0 35px #00aaff66;
+.albumList::-webkit-scrollbar {
+  width: 8px;
+}
 
-                                                                                                                                                                                    backdrop-filter: blur(3px);
-                                                                                                                                                                                    }
+.albumList::-webkit-scrollbar-track {
+  background: #001a33;
+}
 
-                                                                                                                                                                                    /* DOS title bar */
-                                                                                                                                                                                    .top {
-                                                                                                                                                                                      display: flex;
-                                                                                                                                                                                        justify-content: space-between;
+.albumList::-webkit-scrollbar-thumb {
+  background: #00aaff;
+  box-shadow: 0 0 10px #00ccff;
+}
 
-                                                                                                                                                                                          background:
-                                                                                                                                                                                              linear-gradient(
-                                                                                                                                                                                                    90deg,
-                                                                                                                                                                                                          #003d7a,
-                                                                                                                                                                                                                #0077ff
-                                                                                                                                                                                                                    );
+.albumRow {
+  display: grid;
+  grid-template-columns: 54px 42px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border: 1px solid rgba(0, 170, 255, 0.65);
+  background: rgba(0, 25, 70, 0.72);
+  box-shadow:
+    inset 0 0 14px rgba(0, 170, 255, 0.18),
+    0 0 12px rgba(0, 140, 255, 0.25);
+}
 
-                                                                                                                                                                                                                      color: white;
+.coverLink {
+  width: 48px;
+  height: 48px;
+  display: block;
+  border: 1px solid #00aaff;
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.55);
+  overflow: hidden;
+  background: #001a33;
+}
 
-                                                                                                                                                                                                                        padding: 10px 14px;
+.coverLink img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-                                                                                                                                                                                                                          font-weight: bold;
-                                                                                                                                                                                                                          }
+.albumNumber {
+  color: #ffffff;
+  opacity: 0.8;
+}
 
-                                                                                                                                                                                                                          /* DOS screen */
-                                                                                                                                                                                                                          .screen {
-                                                                                                                                                                                                                            padding: 26px;
+.albumName {
+  color: #7de8ff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-                                                                                                                                                                                                                              font-size:
-                                                                                                                                                                                                                                  clamp(
-                                                                                                                                                                                                                                        15px,
-                                                                                                                                                                                                                                              2.5vw,
-                                                                                                                                                                                                                                                    22px
-                                                                                                                                                                                                                                                        );
+.playButton {
+  color: #00172d;
+  background: #7de8ff;
+  border: 1px solid #ffffff;
+  padding: 6px 10px;
+  font-weight: bold;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow:
+    0 0 10px #00ccff,
+    inset 0 0 8px #ffffff;
+}
 
-                                                                                                                                                                                                                                                          line-height: 1.35;
+.playButton:hover {
+  color: white;
+  background: #0077ff;
+}
 
-                                                                                                                                                                                                                                                            min-height: 320px;
-                                                                                                                                                                                                                                                            }
+.scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.18) 0px,
+    rgba(0, 0, 0, 0.18) 2px,
+    rgba(0, 170, 255, 0.03) 3px,
+    transparent 4px
+  );
+  mix-blend-mode: screen;
+}
 
-                                                                                                                                                                                                                                                            .screen p {
-                                                                                                                                                                                                                                                              margin: 0;
-                                                                                                                                                                                                                                                              }
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
 
-                                                                                                                                                                                                                                                              /* Blinking cursor */
-                                                                                                                                                                                                                                                              .blink {
-                                                                                                                                                                                                                                                                animation: blink 0.8s infinite;
-                                                                                                                                                                                                                                                                }
+@keyframes scratchGlitch {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+    opacity: 0;
+  }
 
-                                                                                                                                                                                                                                                                @keyframes blink {
-                                                                                                                                                                                                                                                                  50% {
-                                                                                                                                                                                                                                                                      opacity: 0;
-                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                        }
+  18% {
+    opacity: 1;
+  }
 
-                                                                                                                                                                                                                                                                        /* Optional CRT scanlines */
-                                                                                                                                                                                                                                                                        .scanlines {
-                                                                                                                                                                                                                                                                          position: fixed;
-                                                                                                                                                                                                                                                                            inset: 0;
-                                                                                                                                                                                                                                                                              z-index: 4;
-                                                                                                                                                                                                                                                                                pointer-events: none;
+  45% {
+    transform: translateX(120%) skewX(-18deg);
+    opacity: 0.9;
+  }
 
-                                                                                                                                                                                                                                                                                  background:
-                                                                                                                                                                                                                                                                                      repeating-linear-gradient(
-                                                                                                                                                                                                                                                                                            0deg,
-                                                                                                                                                                                                                                                                                                  rgba(0, 0, 0, 0.18) 0px,
-                                                                                                                                                                                                                                                                                                        rgba(0, 0, 0, 0.18) 2px,
-                                                                                                                                                                                                                                                                                                              rgba(0, 170, 255, 0.03) 3px,
-                                                                                                                                                                                                                                                                                                                    transparent 4px
-                                                                                                                                                                                                                                                                                                                        );
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
 
-                                                                                                                                                                                                                                                                                                                          mix-blend-mode: screen;
-                                                                                                                                                                                                                                                                                                                          }
+@keyframes logoJitter {
+  0%,
+  92%,
+  100% {
+    transform: translate(0, 0);
+  }
 
-                                                                                                                                                                                                                                                                                                                          /* Mobile-first 9:16 */
-                                                                                                                                                                                                                                                                                                                          @media (orientation: portrait) {
+  94% {
+    transform: translate(-2px, 1px);
+  }
 
-                                                                                                                                                                                                                                                                                                                            .terminal {
-                                                                                                                                                                                                                                                                                                                                width: 90vw;
-                                                                                                                                                                                                                                                                                                                                    margin-top: 82px;
-                                                                                                                                                                                                                                                                                                                                      }
+  96% {
+    transform: translate(2px, -1px);
+  }
 
-                                                                                                                                                                                                                                                                                                                                        .topLogo {
-                                                                                                                                                                                                                                                                                                                                            width: min(74vw, 390px);
-                                                                                                                                                                                                                                                                                                                                              }
-                                                                                                                                                                                                                                                                                                                                              }
+  98% {
+    transform: translate(-1px, -1px);
+  }
+}
 
-                                                                                                                                                                                                                                                                                                                                              @media (max-width: 600px) {
+@keyframes logoGlow {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.94;
+  }
 
-                                                                                                                                                                                                                                                                                                                                                .terminal {
-                                                                                                                                                                                                                                                                                                                                                    width: 90vw;
-                                                                                                                                                                                                                                                                                                                                                        max-width: none;
-                                                                                                                                                                                                                                                                                                                                                          }
+  50% {
+    transform: translateY(-6px) scale(1.025);
+    opacity: 1;
+  }
+}
 
-                                                                                                                                                                                                                                                                                                                                                            .screen {
-                                                                                                                                                                                                                                                                                                                                                                min-height: 300px;
-                                                                                                                                                                                                                                                                                                                                                                    padding: 22px;
-                                                                                                                                                                                                                                                                                                                                                                      }
+@media (orientation: portrait) {
+  .terminal {
+    width: 90vw;
+    min-height: 670px;
+    margin-top: 82px;
+  }
 
-                                                                                                                                                                                                                                                                                                                                                                        .top {
-                                                                                                                                                                                                                                                                                                                                                                            font-size: 13px;
-                                                                                                                                                                                                                                                                                                                                                                              }
-                                                                                                                                                                                                                                                                                                                                                                              }
+  .screen {
+    min-height: 610px;
+  }
+
+  .albumList {
+    max-height: 400px;
+  }
+
+  .topLogo {
+    width: min(74vw, 390px);
+  }
+}
+
+@media (max-width: 600px) {
+  .terminal {
+    width: 90vw;
+    max-width: none;
+    min-height: 645px;
+  }
+
+  .screen {
+    min-height: 585px;
+    padding: 18px;
+  }
+
+  .top {
+    font-size: 13px;
+  }
+
+  .albumList {
+    max-height: 365px;
+  }
+
+  .albumRow {
+    grid-template-columns: 48px 1fr;
+    gap: 8px;
+  }
+
+  .albumNumber {
+    display: none;
+  }
+
+  .playButton {
+    grid-column: 2;
+    width: fit-content;
+  }
+}
