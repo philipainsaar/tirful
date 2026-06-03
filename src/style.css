@@ -126,18 +126,39 @@ body,
                                                                                                                                                                                                         }
                                                                                                                                                                                                         }
 
-                                                                                                  .topLogo {
-                                                                                                    width: min(62vw, 420px);
-                                                                                                      height: auto;
-                                                                                                        display: block;
+                                                                                              .topLogo {
+                                                                                                  width: min(62vw, 420px);
+                                                                                                    height: auto;
+                                                                                                      display: block;
+                                                                                                        filter:
+                                                                                                            drop-shadow(0 0 10px #00aaff)
+                                                                                                                drop-shadow(0 0 25px #0077ff)
+                                                                                                                    drop-shadow(0 0 50px #005dff);
+                                                                                                                      animation:
+                                                                                                                          logoGlow 3s ease-in-out infinite,
+                                                                                                                              logoJitter 0.18s steps(2) infinite;
+                                                                                                                              }
 
-                                                                                                          filter:
-                                                                                                              drop-shadow(0 0 10px #00aaff)
-                                                                                                                  drop-shadow(0 0 25px #0077ff)
-                                                                                                                      drop-shadow(0 0 50px #005dff);
+                                                                                                                              @keyframes logoJitter {
+                                                                                                                                0%,
+                                                                                                                                  92%,
+                                                                                                                                    100% {
+                                                                                                                                        transform: translate(0, 0);
+                                                                                                                                          }
 
-                                                                                                                        animation: logoGlow 3s ease-in-out infinite;
-                                                                                                                        }
+                                                                                                                                            94% {
+                                                                                                                                                transform: translate(-2px, 1px);
+                                                                                                                                                  }
+
+                                                                                                                                                    96% {
+                                                                                                                                                        transform: translate(2px, -1px);
+                                                                                                                                                          }
+
+                                                                                                                                                            98% {
+                                                                                                                                                                transform: translate(-1px, -1px);
+                                                                                                                                                                  }
+                                                                                                                                                                  }
+                                                                                              
 
                                                                                                                         @keyframes logoGlow {
                                                                                                                           0%,
