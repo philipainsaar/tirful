@@ -36,13 +36,9 @@ function NeonOrb() {
   return (
     <mesh ref={orbRef} position={[0, 0.8, -6]}>
       <sphereGeometry args={[1.65, 64, 64]} />
-      <meshStandardMaterial
-        color="#0077ff"
-        emissive="#00bbff"
-        emissiveIntensity={3.1}
-        transparent
-        opacity={0.42}
-        blending={THREE.AdditiveBlending}
+      <meshBasicMaterial
+        wireframe
+          color="#00aaff"
       />
     </mesh>
   );
