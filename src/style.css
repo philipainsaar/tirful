@@ -2,148 +2,216 @@ html,
 body,
 #root {
   margin: 0;
-  width: 100%;
-  height: 100%;
-  font-family: "Courier New", monospace;
-  background: #020818;
-  overflow: hidden;
-}
+    width: 100%;
+      height: 100%;
+        font-family: "Courier New", monospace;
+          background: #020818;
+            overflow: hidden;
+            }
 
-.page {
-  width: 100vw;
-  min-height: 100svh;
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  background-color: #020818;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+            /* Main page */
+            .page {
+              width: 100vw;
+                min-height: 100svh;
+                  position: relative;
+                    overflow: hidden;
+                      display: grid;
+                        place-items: center;
+                          background-color: #020818;
+                          }
 
-.page::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle, #005dff44, #020818 75%),
-    linear-gradient(rgba(0, 4, 20, 0.25), rgba(0, 3, 16, 0.9));
-  z-index: 0;
-}
+                          /* Background image layer */
+                          .imageBackground {
+                            position: fixed;
+                              inset: 0;
+                                z-index: 0;
+                                  background-color: #020818;
+                                    background-size: cover;
+                                      background-position: center;
+                                        background-repeat: no-repeat;
+                                        }
 
-.threeLayer {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
+                                        .imageBackground::after {
+                                          content: "";
+                                            position: absolute;
+                                              inset: 0;
+                                                background:
+                                                    radial-gradient(circle, #005dff44, rgba(2, 8, 24, 0.88) 75%),
+                                                        linear-gradient(
+                                                              rgba(0, 4, 20, 0.15),
+                                                                    rgba(0, 3, 16, 0.76)
+                                                                        );
+                                                                          pointer-events: none;
+                                                                          }
 
-.logoWrap {
-  position: fixed;
-  top: max(15px, env(safe-area-inset-top));
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-  pointer-events: none;
-}
+                                                                          /* Three.js layer */
+                                                                          .threeLayer {
+                                                                            position: fixed;
+                                                                              inset: 0;
+                                                                                z-index: 1;
+                                                                                  pointer-events: none;
+                                                                                    background: transparent !important;
+                                                                                    }
 
-.topLogo {
-  width: min(62vw, 420px);
-  height: auto;
-  display: block;
-  filter:
-    drop-shadow(0 0 10px #00aaff)
-    drop-shadow(0 0 25px #0077ff)
-    drop-shadow(0 0 50px #005dff);
-  animation: logoGlow 3s ease-in-out infinite;
-}
+                                                                                    .threeLayer canvas,
+                                                                                    .threeCanvas {
+                                                                                      background: transparent !important;
+                                                                                      }
 
-@keyframes logoGlow {
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
-    opacity: 0.94;
-  }
+                                                                                      /* Top Logo */
+                                                                                      .logoWrap {
+                                                                                        position: fixed;
+                                                                                          top: max(15px, env(safe-area-inset-top));
+                                                                                            left: 50%;
+                                                                                              transform: translateX(-50%);
+                                                                                                z-index: 3;
+                                                                                                  pointer-events: none;
+                                                                                                  }
 
-  50% {
-    transform: translateY(-6px) scale(1.025);
-    opacity: 1;
-  }
-}
+                                                                                                  .topLogo {
+                                                                                                    width: min(62vw, 420px);
+                                                                                                      height: auto;
+                                                                                                        display: block;
 
-.terminal {
-  z-index: 2;
-  width: 88vw;
-  max-width: 760px;
-  background: #000c23dd;
-  border: 2px solid #00aaff;
-  color: #7de8ff;
-  text-shadow: 0 0 8px #00ccff;
-  box-shadow:
-    0 0 25px #008cff,
-    0 0 70px #0055ff,
-    inset 0 0 35px #00aaff66;
-  backdrop-filter: blur(3px);
-}
+                                                                                                          filter:
+                                                                                                              drop-shadow(0 0 10px #00aaff)
+                                                                                                                  drop-shadow(0 0 25px #0077ff)
+                                                                                                                      drop-shadow(0 0 50px #005dff);
 
-.top {
-  display: flex;
-  justify-content: space-between;
-  background: linear-gradient(90deg, #003d7a, #0077ff);
-  color: white;
-  padding: 10px 14px;
-  font-weight: bold;
-}
+                                                                                                                        animation: logoGlow 3s ease-in-out infinite;
+                                                                                                                        }
 
-.screen {
-  padding: 26px;
-  font-size: clamp(15px, 2.5vw, 22px);
-  line-height: 1.35;
-  min-height: 320px;
-}
+                                                                                                                        @keyframes logoGlow {
+                                                                                                                          0%,
+                                                                                                                            100% {
+                                                                                                                                transform: translateY(0) scale(1);
+                                                                                                                                    opacity: 0.94;
+                                                                                                                                      }
 
-p {
-  margin: 0;
-}
+                                                                                                                                        50% {
+                                                                                                                                            transform: translateY(-6px) scale(1.025);
+                                                                                                                                                opacity: 1;
+                                                                                                                                                  }
+                                                                                                                                                  }
 
-.blink {
-  animation: blink 0.8s infinite;
-}
+                                                                                                                                                  /* DOS Window */
+                                                                                                                                                  .terminal {
+                                                                                                                                                    z-index: 2;
+                                                                                                                                                      width: 88vw;
+                                                                                                                                                        max-width: 760px;
 
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
+                                                                                                                                                          background: #000c23dd;
 
-@media (orientation: portrait) {
-  .page {
-    min-height: 100svh;
-  }
+                                                                                                                                                            border: 2px solid #00aaff;
 
-  .terminal {
-    margin-top: 82px;
-    width: 90vw;
-  }
+                                                                                                                                                              color: #7de8ff;
 
-  .topLogo {
-    width: min(74vw, 390px);
-  }
-}
+                                                                                                                                                                text-shadow:
+                                                                                                                                                                    0 0 8px #00ccff;
 
-@media (max-width: 600px) {
-  .terminal {
-    width: 90vw;
-    max-width: none;
-  }
+                                                                                                                                                                      box-shadow:
+                                                                                                                                                                          0 0 25px #008cff,
+                                                                                                                                                                              0 0 70px #0055ff,
+                                                                                                                                                                                  inset 0 0 35px #00aaff66;
 
-  .screen {
-    min-height: 300px;
-    padding: 22px;
-  }
+                                                                                                                                                                                    backdrop-filter: blur(3px);
+                                                                                                                                                                                    }
 
-  .top {
-    font-size: 13px;
-  }
-}
+                                                                                                                                                                                    /* DOS title bar */
+                                                                                                                                                                                    .top {
+                                                                                                                                                                                      display: flex;
+                                                                                                                                                                                        justify-content: space-between;
+
+                                                                                                                                                                                          background:
+                                                                                                                                                                                              linear-gradient(
+                                                                                                                                                                                                    90deg,
+                                                                                                                                                                                                          #003d7a,
+                                                                                                                                                                                                                #0077ff
+                                                                                                                                                                                                                    );
+
+                                                                                                                                                                                                                      color: white;
+
+                                                                                                                                                                                                                        padding: 10px 14px;
+
+                                                                                                                                                                                                                          font-weight: bold;
+                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                          /* DOS screen */
+                                                                                                                                                                                                                          .screen {
+                                                                                                                                                                                                                            padding: 26px;
+
+                                                                                                                                                                                                                              font-size:
+                                                                                                                                                                                                                                  clamp(
+                                                                                                                                                                                                                                        15px,
+                                                                                                                                                                                                                                              2.5vw,
+                                                                                                                                                                                                                                                    22px
+                                                                                                                                                                                                                                                        );
+
+                                                                                                                                                                                                                                                          line-height: 1.35;
+
+                                                                                                                                                                                                                                                            min-height: 320px;
+                                                                                                                                                                                                                                                            }
+
+                                                                                                                                                                                                                                                            .screen p {
+                                                                                                                                                                                                                                                              margin: 0;
+                                                                                                                                                                                                                                                              }
+
+                                                                                                                                                                                                                                                              /* Blinking cursor */
+                                                                                                                                                                                                                                                              .blink {
+                                                                                                                                                                                                                                                                animation: blink 0.8s infinite;
+                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                @keyframes blink {
+                                                                                                                                                                                                                                                                  50% {
+                                                                                                                                                                                                                                                                      opacity: 0;
+                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                                                                        /* Optional CRT scanlines */
+                                                                                                                                                                                                                                                                        .scanlines {
+                                                                                                                                                                                                                                                                          position: fixed;
+                                                                                                                                                                                                                                                                            inset: 0;
+                                                                                                                                                                                                                                                                              z-index: 4;
+                                                                                                                                                                                                                                                                                pointer-events: none;
+
+                                                                                                                                                                                                                                                                                  background:
+                                                                                                                                                                                                                                                                                      repeating-linear-gradient(
+                                                                                                                                                                                                                                                                                            0deg,
+                                                                                                                                                                                                                                                                                                  rgba(0, 0, 0, 0.18) 0px,
+                                                                                                                                                                                                                                                                                                        rgba(0, 0, 0, 0.18) 2px,
+                                                                                                                                                                                                                                                                                                              rgba(0, 170, 255, 0.03) 3px,
+                                                                                                                                                                                                                                                                                                                    transparent 4px
+                                                                                                                                                                                                                                                                                                                        );
+
+                                                                                                                                                                                                                                                                                                                          mix-blend-mode: screen;
+                                                                                                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                                                                                                          /* Mobile-first 9:16 */
+                                                                                                                                                                                                                                                                                                                          @media (orientation: portrait) {
+
+                                                                                                                                                                                                                                                                                                                            .terminal {
+                                                                                                                                                                                                                                                                                                                                width: 90vw;
+                                                                                                                                                                                                                                                                                                                                    margin-top: 82px;
+                                                                                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                                                                                        .topLogo {
+                                                                                                                                                                                                                                                                                                                                            width: min(74vw, 390px);
+                                                                                                                                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                                                                                                                                              }
+
+                                                                                                                                                                                                                                                                                                                                              @media (max-width: 600px) {
+
+                                                                                                                                                                                                                                                                                                                                                .terminal {
+                                                                                                                                                                                                                                                                                                                                                    width: 90vw;
+                                                                                                                                                                                                                                                                                                                                                        max-width: none;
+                                                                                                                                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                                                                                                                                            .screen {
+                                                                                                                                                                                                                                                                                                                                                                min-height: 300px;
+                                                                                                                                                                                                                                                                                                                                                                    padding: 22px;
+                                                                                                                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                                                                                                                        .top {
+                                                                                                                                                                                                                                                                                                                                                                            font-size: 13px;
+                                                                                                                                                                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                                                                                                                                                                              }

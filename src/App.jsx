@@ -69,22 +69,31 @@ function NeonHorizonLines() {
 }
 
 function ThreeBackground() {
-  return (
-    <Canvas camera={{ position: [0, 2.4, 6.4], fov: 64 }}>
-      <color attach="background" args={["transparent"]} />
-      <ambientLight intensity={0.38} />
-      <pointLight position={[0, 4, 2]} intensity={5} color="#00ccff" />
-      <pointLight position={[-4, 1, -2]} intensity={2} color="#004cff" />
-      <NeonOrb />
-      <NeonHorizonLines />
-      <SynthwaveGrid />
-    </Canvas>
-  );
-}
+    return (
+        <Canvas
+              gl={{
+                      alpha: true,
+                              antialias: true
+                                    }}
+                                          onCreated={({ gl }) => {
+                                                  gl.setClearColor(0x000000, 0);
+                                                        }}
+                                                              camera={{ position: [0, 2.4, 6.4], fov: 64 }}
+                                                                  >
+                                                                        <ambientLight intensity={0.38} />
+                                                                              <pointLight position={[0, 4, 2]} intensity={5} color="#00ccff" />
+                                                                                    <NeonOrb />
+                                                                                          <NeonHorizonLines />
+                                                                                                <SynthwaveGrid />
+                                                                                                    </Canvas>
+                                                                                                      );
+                                                                                                      }
+
 
 export default function App() {
   return (
-    <main className="page" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <main className="page">
+      <div className="imageBackground" style={{ backgroundImage: `url(${backgroundImage})` }} />
       <div className="threeLayer">
         <ThreeBackground />
       </div>
