@@ -34,8 +34,8 @@ function NeonOrb() {
   });
 
   return (
-    <mesh ref={orbRef} position={[0, 0.8, -3]}>
-      <sphereGeometry args={[1.65, 32, 32]} />
+    <mesh ref={orbRef} position={[0, 0, 0]}>
+      <sphereGeometry args={[1.65, 16, 16]} />
       <meshBasicMaterial
         wireframe
           color="#00aaff"
