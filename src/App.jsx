@@ -6,7 +6,26 @@ const backgroundImage = "/backgrounds/dos-bg.gif";
 const logoImage = "/images/logo.png";
 const fallbackCover = "/images/logo.png";
 
-/* All provided Bandcamp embed URLs are filled in. Add lyrics, durationSeconds, or syncedLyrics next. */
+/*
+  Complete combined version:
+  - Player outside terminal
+  - Option B instant Bandcamp embed
+  - All provided embed URLs
+  - Lyrics-ready fields
+  - No oEmbed/fetch
+  - No autoplay attempt
+
+  Add lyrics per release:
+  lyrics: `your lyrics here`
+
+  For exact line sync:
+  syncedLyrics: [
+    { time: 0, text: "first line" },
+    { time: 12.5, text: "second line" }
+  ]
+
+  Set durationSeconds to exact song length for smooth auto-scroll lyrics.
+*/
 
 const releases = [
   {
@@ -311,13 +330,543 @@ const releases = [
   }
 ];
 
-function SynthwaveGrid(){const r=useRef(null);useFrame(({clock})=>{if(r.current)r.current.position.z=(clock.elapsedTime*1.2)%2});return <group position={[0,-2.2,-2]}><gridHelper ref={r} args={[70,70,"#00ccff","#004cff"]}/></group>}
-function NeonOrb(){const r=useRef(null);useFrame(({clock})=>{if(!r.current)return;const p=1+Math.sin(clock.elapsedTime*1.7)*.055;r.current.scale.set(p,p,p);r.current.rotation.y=clock.elapsedTime*.35;r.current.rotation.x=Math.sin(clock.elapsedTime*.35)*.18});return <group ref={r} position={[0,-.08,-5.7]}><mesh><sphereGeometry args={[3.9,48,48]}/><meshStandardMaterial color="#0077ff" emissive="#00bbff" emissiveIntensity={2.8} transparent opacity={.14} depthWrite={false} blending={THREE.AdditiveBlending}/></mesh><mesh><sphereGeometry args={[4,32,32]}/><meshBasicMaterial color="#00ccff" wireframe transparent opacity={.2} depthWrite={false}/></mesh><mesh rotation={[Math.PI/2,0,0]}><torusGeometry args={[4.55,.025,12,160]}/><meshBasicMaterial color="#9ff4ff" transparent opacity={.24} depthWrite={false}/></mesh></group>}
-function ThreeBackground(){return <Canvas gl={{alpha:true,antialias:true}} onCreated={({gl})=>gl.setClearColor(0x000000,0)} camera={{position:[0,2.4,6.4],fov:64}}><ambientLight intensity={.38}/><pointLight position={[0,4,2]} intensity={5} color="#00ccff"/><pointLight position={[-4,1,-2]} intensity={2} color="#004cff"/><NeonOrb/><SynthwaveGrid/></Canvas>}
-function BootText(){return <div className="bootText"><p>Microsoft MS-DOS Version 3.10</p><p>Copyright Microsoft Corp 1981-1985.</p><br/><p>C:\&gt; DIR</p><p>TIRFUL.EXE&nbsp;&nbsp;&nbsp;&nbsp; PLAYER.DB</p><p>WIN31MP.EXE&nbsp;&nbsp; LYRICS.SCR</p><br/><p>C:\&gt; RUN WIN31MP</p><p>LOADING WINDOWS 3.1 MEDIA PLAYER...</p><p className="blink">_</p></div>}
-function usePlaybackClock(release,running,resetKey){const [elapsed,setElapsed]=useState(0);const start=useRef(0),saved=useRef(0);useEffect(()=>{setElapsed(0);saved.current=0;start.current=performance.now()},[resetKey,release]);useEffect(()=>{if(!running){saved.current=elapsed;return}start.current=performance.now()-saved.current*1000;let f;function tick(){const n=(performance.now()-start.current)/1000;setElapsed(Math.min(n,release.durationSeconds||180));f=requestAnimationFrame(tick)}tick();return()=>cancelAnimationFrame(f)},[running,release]);return elapsed}
-function formatTime(s){s=Math.max(0,Math.floor(s||0));return `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`}
-function LyricsWindow({release,elapsed,onClose,onRestart}){const ref=useRef(null);const synced=release.syncedLyrics&&release.syncedLyrics.length>0;const txt=release.lyrics?.trim();const active=synced?release.syncedLyrics.reduce((a,l,i)=>elapsed>=l.time?i:a,0):0;useEffect(()=>{const el=ref.current;if(!el)return;if(synced){const line=el.querySelector(`[data-line="${active}"]`);if(line)line.scrollIntoView({block:"center",behavior:"smooth"});return}const dur=Math.max(release.durationSeconds||180,1);el.scrollTop=(el.scrollHeight-el.clientHeight)*Math.min(elapsed/dur,1)},[elapsed,release,synced,active]);return <div className="lyricsWindow"><div className="lyricsTitleBar"><span>LYRICS.SCR - {release.name}</span><button type="button" onClick={onRestart}>↺</button><button type="button" onClick={onClose}>×</button></div><div className="lyricsMeta"><span>TIME {formatTime(elapsed)}</span><span>DURATION {formatTime(release.durationSeconds||180)}</span></div><div className="lyricsScroller" ref={ref}>{synced?release.syncedLyrics.map((l,i)=><p key={`${l.time}-${l.text}`} data-line={i} className={i===active?"activeLyricLine":""}>{l.text}</p>):txt?txt.split("\n").map((l,i)=><p key={`${i}-${l}`}>{l||"\u00a0"}</p>):<p className="emptyLyrics">NO LYRICS ADDED. PASTE LYRICS INTO release.lyrics OR ADD syncedLyrics.</p>}</div></div>}
-function FloatingWin31Player({release,currentIndex,total,minimized,onPrevious,onNext,onClose,onMinimize,onRestore}){const [pos,setPos]=useState({x:18,y:62});const [showLyrics,setShowLyrics]=useState(false);const [running,setRunning]=useState(false);const [reset,setReset]=useState(0);const drag=useRef({});const elapsed=usePlaybackClock(release,running,reset);useEffect(()=>{setRunning(false);setShowLyrics(false);setReset(v=>v+1)},[release]);function startDrag(e){e.preventDefault();drag.current={active:true,startX:e.clientX,startY:e.clientY,baseX:pos.x,baseY:pos.y};window.addEventListener('pointermove',moveDrag);window.addEventListener('pointerup',stopDrag)}function moveDrag(e){if(!drag.current.active)return;setPos({x:Math.max(4,Math.min(drag.current.baseX+e.clientX-drag.current.startX,360)),y:Math.max(4,Math.min(drag.current.baseY+e.clientY-drag.current.startY,360))})}function stopDrag(){drag.current.active=false;window.removeEventListener('pointermove',moveDrag);window.removeEventListener('pointerup',stopDrag)}function sync(){setReset(v=>v+1);setRunning(true)}useEffect(()=>()=>{window.removeEventListener('pointermove',moveDrag);window.removeEventListener('pointerup',stopDrag)},[]);if(minimized)return <button className="minimizedPlayer" type="button" onClick={onRestore}>▣ MEDIA PLAYER - {release.name}</button>;return <><div className="floatingWinPlayer" style={{left:`${pos.x}px`,top:`${pos.y}px`}}><div className="winPlayerTitleBar" onPointerDown={startDrag}><span className="winPlayerMenuBox"/><span className="winPlayerTitle">Windows 3.1 Media Player - TIRFUL.WAV</span><button className="winPlayerControlButton" type="button" onPointerDown={e=>e.stopPropagation()} onClick={onMinimize}>_</button><button className="winPlayerControlButton" type="button" onPointerDown={e=>e.stopPropagation()} onClick={onClose}>×</button></div><div className="winPlayerBody"><a className="winPlayerArt" href={release.url} target="_blank" rel="noreferrer"><img src={release.cover} alt={`${release.name} cover`}/></a><div className="winPlayerPanel"><div className="winPlayerDisplay"><p className="winPlayerNow">NOW PLAYING</p><p className="winPlayerTrack">{release.name}</p><p className="winPlayerArtist">{release.artist}</p><p className="winPlayerCounter">{String(currentIndex+1).padStart(2,"0")} / {String(total).padStart(2,"0")}</p></div><div className="fakeProgress"><span style={{width:`${Math.min((elapsed/(release.durationSeconds||180))*100,100)}%`}}/></div><div className="winPlayerControls"><button type="button" onClick={onPrevious}>◀ PREV</button><button type="button" onClick={()=>setRunning(v=>!v)}>{running?"❚❚ PAUSE":"▶ PLAY"}</button><button type="button" onClick={onNext}>NEXT ▶</button><button type="button" onClick={()=>setShowLyrics(v=>!v)}>LYRICS</button><button type="button" onClick={sync}>↺ SYNC</button><a href={release.url} target="_blank" rel="noreferrer">OPEN</a></div><div className="winPlayerEmbed"><iframe className="bandcampPlayer" title={`Bandcamp player for ${release.name}`} src={release.embedUrl} seamless="seamless" allow="autoplay"/></div></div></div></div>{showLyrics&&<LyricsWindow release={release} elapsed={elapsed} onRestart={sync} onClose={()=>setShowLyrics(false)}/>}</>}
-function AlbumPage(){const [activeIndex,setActiveIndex]=useState(null);const [minimized,setMinimized]=useState(false);const active=activeIndex===null?null:releases[activeIndex];function prev(){setActiveIndex(c=>c===null?releases.length-1:(c-1+releases.length)%releases.length);setMinimized(false)}function next(){setActiveIndex(c=>c===null?0:(c+1)%releases.length);setMinimized(false)}return <div className="albumPage"><div className="albumIntro"><p className="albumHeader">C:\&gt; TIRFUL_PLAYER</p><p className="albumSub">PLAY opens Win 3.1 Media Player. LYRICS scrolls by duration or timestamps.</p></div><div className="playerStage">{active&&<FloatingWin31Player release={active} currentIndex={activeIndex} total={releases.length} minimized={minimized} onPrevious={prev} onNext={next} onMinimize={()=>setMinimized(true)} onRestore={()=>setMinimized(false)} onClose={()=>{setActiveIndex(null);setMinimized(false)}}/>}<div className="albumGrid">{releases.map((release,index)=><article className={`albumCard ${activeIndex===index?"activeAlbumCard":""}`} key={release.url}><a className="coverLink" href={release.url} target="_blank" rel="noreferrer"><img src={release.cover} alt={`${release.name} cover`}/></a><div className="albumCardFooter"><p className="albumName">{release.name}</p><button className="playButton" type="button" onClick={()=>{setActiveIndex(index);setMinimized(false)}}>PLAY</button></div></article>)}</div></div></div>}
-export default function App(){const [showAlbums,setShowAlbums]=useState(false);useEffect(()=>{const t=setTimeout(()=>setShowAlbums(true),1000);return()=>clearTimeout(t)},[]);return <main className="page"><div className="imageBackground" style={{backgroundImage:`url(${backgroundImage})`}}/><div className="threeLayer"><ThreeBackground/></div><header className="logoWrap"><img src={logoImage} alt="Tirful logo" className="topLogo"/><div className="logoGlitchScratch"><span/><span/><span/></div></header><section className="terminal"><div className="top"><span>MICROSOFT DOS 3.1</span><span>■</span></div><div className="screen">{showAlbums?<AlbumPage/>:<BootText/>}</div></section></main>}
+function SynthwaveGrid() {
+  const gridRef = useRef(null);
+
+  useFrame(({ clock }) => {
+    if (!gridRef.current) return;
+    gridRef.current.position.z = (clock.elapsedTime * 1.2) % 2;
+  });
+
+  return (
+    <group position={[0, -2.2, -2]}>
+      <gridHelper ref={gridRef} args={[70, 70, "#00ccff", "#004cff"]} />
+    </group>
+  );
+}
+
+function NeonOrb() {
+  const orbRef = useRef(null);
+
+  useFrame(({ clock }) => {
+    if (!orbRef.current) return;
+    const pulse = 1 + Math.sin(clock.elapsedTime * 1.7) * 0.055;
+    orbRef.current.scale.set(pulse, pulse, pulse);
+    orbRef.current.rotation.y = clock.elapsedTime * 0.35;
+    orbRef.current.rotation.x = Math.sin(clock.elapsedTime * 0.35) * 0.18;
+  });
+
+  return (
+    <group ref={orbRef} position={[0, -0.08, -5.7]}>
+      <mesh>
+        <sphereGeometry args={[3.9, 48, 48]} />
+        <meshStandardMaterial
+          color="#0077ff"
+          emissive="#00bbff"
+          emissiveIntensity={2.8}
+          transparent
+          opacity={0.14}
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
+        />
+      </mesh>
+
+      <mesh>
+        <sphereGeometry args={[4.0, 32, 32]} />
+        <meshBasicMaterial
+          color="#00ccff"
+          wireframe
+          transparent
+          opacity={0.2}
+          depthWrite={false}
+        />
+      </mesh>
+
+      <mesh rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[4.55, 0.025, 12, 160]} />
+        <meshBasicMaterial
+          color="#9ff4ff"
+          transparent
+          opacity={0.24}
+          depthWrite={false}
+        />
+      </mesh>
+    </group>
+  );
+}
+
+function NeonHorizonLines() {
+  const linesRef = useRef(null);
+
+  useFrame(({ clock }) => {
+    if (!linesRef.current) return;
+    linesRef.current.position.y = Math.sin(clock.elapsedTime * 0.8) * 0.08;
+  });
+
+  return (
+    <group ref={linesRef} position={[0, -0.65, -5]}>
+      {Array.from({ length: 8 }).map((_, i) => (
+        <mesh key={i} position={[0, i * 0.18, 0]}>
+          <boxGeometry args={[9.5 - i * 0.55, 0.012, 0.012]} />
+          <meshBasicMaterial
+            color="#00aaff"
+            transparent
+            opacity={0.28 - i * 0.02}
+            depthWrite={false}
+          />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+function ThreeBackground() {
+  return (
+    <Canvas
+      gl={{ alpha: true, antialias: true }}
+      onCreated={({ gl }) => {
+        gl.setClearColor(0x000000, 0);
+      }}
+      camera={{ position: [0, 2.4, 6.4], fov: 64 }}
+    >
+      <ambientLight intensity={0.38} />
+      <pointLight position={[0, 4, 2]} intensity={5} color="#00ccff" />
+      <pointLight position={[-4, 1, -2]} intensity={2} color="#004cff" />
+      <NeonOrb />
+      <NeonHorizonLines />
+      <SynthwaveGrid />
+    </Canvas>
+  );
+}
+
+function BootText() {
+  return (
+    <div className="bootText">
+      <p>Microsoft MS-DOS Version 3.10</p>
+      <p>Copyright Microsoft Corp 1981-1985.</p>
+      <br />
+      <p>C:\&gt; DIR</p>
+      <p>TIRFUL.EXE&nbsp;&nbsp;&nbsp;&nbsp; PLAYER.DB</p>
+      <p>WIN31MP.EXE&nbsp;&nbsp; LYRICS.SCR</p>
+      <br />
+      <p>C:\&gt; RUN WIN31MP</p>
+      <p>LOADING WINDOWS 3.1 MEDIA PLAYER...</p>
+      <p className="blink">_</p>
+    </div>
+  );
+}
+
+function usePlaybackClock(release, isRunning, resetKey) {
+  const [elapsed, setElapsed] = useState(0);
+  const startTime = useRef(0);
+  const savedElapsed = useRef(0);
+
+  useEffect(() => {
+    setElapsed(0);
+    savedElapsed.current = 0;
+    startTime.current = performance.now();
+  }, [resetKey, release]);
+
+  useEffect(() => {
+    if (!isRunning) {
+      savedElapsed.current = elapsed;
+      return;
+    }
+
+    startTime.current = performance.now() - savedElapsed.current * 1000;
+    let frameId;
+
+    function tick() {
+      const nextElapsed = (performance.now() - startTime.current) / 1000;
+      setElapsed(Math.min(nextElapsed, release.durationSeconds || 180));
+      frameId = requestAnimationFrame(tick);
+    }
+
+    tick();
+    return () => cancelAnimationFrame(frameId);
+  }, [isRunning, release]);
+
+  return elapsed;
+}
+
+function formatTime(seconds) {
+  const safeSeconds = Math.max(0, Math.floor(seconds || 0));
+  const minutes = Math.floor(safeSeconds / 60);
+  const rest = safeSeconds % 60;
+  return `${minutes}:${String(rest).padStart(2, "0")}`;
+}
+
+function LyricsWindow({ release, elapsed, onClose, onRestart }) {
+  const lyricsRef = useRef(null);
+  const synced = release.syncedLyrics && release.syncedLyrics.length > 0;
+  const lyricsText = release.lyrics?.trim();
+
+  const activeLineIndex = synced
+    ? release.syncedLyrics.reduce((active, line, index) => {
+        return elapsed >= line.time ? index : active;
+      }, 0)
+    : 0;
+
+  useEffect(() => {
+    const element = lyricsRef.current;
+    if (!element) return;
+
+    if (synced) {
+      const activeLine = element.querySelector(`[data-line="${activeLineIndex}"]`);
+      if (activeLine) activeLine.scrollIntoView({ block: "center", behavior: "smooth" });
+      return;
+    }
+
+    const duration = Math.max(release.durationSeconds || 180, 1);
+    const maxScroll = element.scrollHeight - element.clientHeight;
+    const progress = Math.min(elapsed / duration, 1);
+    element.scrollTop = maxScroll * progress;
+  }, [elapsed, release, synced, activeLineIndex]);
+
+  return (
+    <div className="lyricsWindow">
+      <div className="lyricsTitleBar">
+        <span>LYRICS.SCR - {release.name}</span>
+        <button type="button" onClick={onRestart}>↺</button>
+        <button type="button" onClick={onClose}>×</button>
+      </div>
+
+      <div className="lyricsMeta">
+        <span>TIME {formatTime(elapsed)}</span>
+        <span>DURATION {formatTime(release.durationSeconds || 180)}</span>
+      </div>
+
+      <div className="lyricsScroller" ref={lyricsRef}>
+        {synced ? (
+          release.syncedLyrics.map((line, index) => (
+            <p
+              key={`${line.time}-${line.text}`}
+              data-line={index}
+              className={index === activeLineIndex ? "activeLyricLine" : ""}
+            >
+              {line.text}
+            </p>
+          ))
+        ) : lyricsText ? (
+          lyricsText.split("\n").map((line, index) => (
+            <p key={`${index}-${line}`}>{line || "\u00a0"}</p>
+          ))
+        ) : (
+          <p className="emptyLyrics">
+            NO LYRICS ADDED. PASTE LYRICS INTO release.lyrics OR ADD syncedLyrics.
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function FloatingWin31Player({
+  release,
+  currentIndex,
+  total,
+  minimized,
+  onPrevious,
+  onNext,
+  onClose,
+  onMinimize,
+  onRestore
+}) {
+  const [position, setPosition] = useState({ x: 18, y: 120 });
+  const [showLyrics, setShowLyrics] = useState(false);
+  const [clockRunning, setClockRunning] = useState(false);
+  const [clockResetKey, setClockResetKey] = useState(0);
+  const drag = useRef({ active: false, startX: 0, startY: 0, baseX: 0, baseY: 0 });
+
+  const elapsed = usePlaybackClock(release, clockRunning, clockResetKey);
+
+  useEffect(() => {
+    setClockRunning(false);
+    setShowLyrics(false);
+    setClockResetKey((value) => value + 1);
+  }, [release]);
+
+  function startDrag(event) {
+    event.preventDefault();
+
+    drag.current = {
+      active: true,
+      startX: event.clientX,
+      startY: event.clientY,
+      baseX: position.x,
+      baseY: position.y
+    };
+
+    window.addEventListener("pointermove", moveDrag);
+    window.addEventListener("pointerup", stopDrag);
+  }
+
+  function moveDrag(event) {
+    if (!drag.current.active) return;
+
+    const nextX = drag.current.baseX + event.clientX - drag.current.startX;
+    const nextY = drag.current.baseY + event.clientY - drag.current.startY;
+
+    setPosition({
+      x: Math.max(4, Math.min(nextX, window.innerWidth - 220)),
+      y: Math.max(4, Math.min(nextY, window.innerHeight - 120))
+    });
+  }
+
+  function stopDrag() {
+    drag.current.active = false;
+    window.removeEventListener("pointermove", moveDrag);
+    window.removeEventListener("pointerup", stopDrag);
+  }
+
+  function restartLyricsClock() {
+    setClockResetKey((value) => value + 1);
+    setClockRunning(true);
+  }
+
+  useEffect(() => {
+    return () => {
+      window.removeEventListener("pointermove", moveDrag);
+      window.removeEventListener("pointerup", stopDrag);
+    };
+  }, []);
+
+  if (!release) return null;
+
+  if (minimized) {
+    return (
+      <button className="minimizedPlayer" type="button" onClick={onRestore}>
+        ▣ MEDIA PLAYER - {release.name}
+      </button>
+    );
+  }
+
+  return (
+    <>
+      <div
+        className="floatingWinPlayer"
+        style={{ left: `${position.x}px`, top: `${position.y}px` }}
+      >
+        <div className="winPlayerTitleBar" onPointerDown={startDrag}>
+          <span className="winPlayerMenuBox" />
+          <span className="winPlayerTitle">Windows 3.1 Media Player - TIRFUL.WAV</span>
+
+          <button
+            className="winPlayerControlButton"
+            type="button"
+            onPointerDown={(event) => event.stopPropagation()}
+            onClick={onMinimize}
+            aria-label="Minimize player"
+          >
+            _
+          </button>
+
+          <button
+            className="winPlayerControlButton"
+            type="button"
+            onPointerDown={(event) => event.stopPropagation()}
+            onClick={onClose}
+            aria-label="Close player"
+          >
+            ×
+          </button>
+        </div>
+
+        <div className="winPlayerBody">
+          <a
+            className="winPlayerArt"
+            href={release.url}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Open ${release.name} on Bandcamp`}
+          >
+            <img src={release.cover} alt={`${release.name} cover`} />
+          </a>
+
+          <div className="winPlayerPanel">
+            <div className="winPlayerDisplay">
+              <p className="winPlayerNow">NOW PLAYING</p>
+              <p className="winPlayerTrack">{release.name}</p>
+              <p className="winPlayerArtist">{release.artist}</p>
+              <p className="winPlayerCounter">
+                {String(currentIndex + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+              </p>
+            </div>
+
+            <div className="fakeProgress">
+              <span style={{ width: `${Math.min((elapsed / (release.durationSeconds || 180)) * 100, 100)}%` }} />
+            </div>
+
+            <div className="winPlayerControls">
+              <button type="button" onClick={onPrevious}>◀ PREV</button>
+              <button type="button" onClick={onNext}>NEXT ▶</button>
+              <button type="button" onClick={() => setShowLyrics((value) => !value)}>LYRICS</button>
+              <button type="button" onClick={restartLyricsClock}>↺ SYNC LYRICS</button>
+              <button type="button" onClick={() => setClockRunning((value) => !value)}>
+                {clockRunning ? "❚❚ PAUSE LYRICS" : "▶ START LYRICS"}
+              </button>
+              <a href={release.url} target="_blank" rel="noreferrer">OPEN BANDCAMP</a>
+            </div>
+
+            <div className="winPlayerEmbed">
+              <div className="bandcampInstruction">
+                Press ▶ inside the Bandcamp player below
+              </div>
+
+              <iframe
+                className="bandcampPlayer"
+                title={`Bandcamp player for ${release.name}`}
+                src={release.embedUrl}
+                seamless="seamless"
+                allow="autoplay"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {showLyrics && (
+        <LyricsWindow
+          release={release}
+          elapsed={elapsed}
+          onRestart={restartLyricsClock}
+          onClose={() => setShowLyrics(false)}
+        />
+      )}
+    </>
+  );
+}
+
+function AlbumPage({ activeIndex, onPlayRelease }) {
+  return (
+    <div className="albumPage">
+      <div className="albumIntro">
+        <p className="albumHeader">C:\&gt; TIRFUL_PLAYER</p>
+        <p className="albumSub">OPEN PLAYER loads Bandcamp inside a Win 3.1 window.</p>
+      </div>
+
+      <div className="albumGrid">
+        {releases.map((release, index) => (
+          <article
+            className={`albumCard ${activeIndex === index ? "activeAlbumCard" : ""}`}
+            key={release.url}
+          >
+            <a
+              className="coverLink"
+              href={release.url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Open ${release.name} on Bandcamp`}
+            >
+              <img src={release.cover} alt={`${release.name} cover`} />
+            </a>
+
+            <div className="albumCardFooter">
+              <p className="albumName">{release.name}</p>
+
+              <button
+                className="playButton"
+                type="button"
+                onClick={() => onPlayRelease(index)}
+              >
+                OPEN PLAYER
+              </button>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function App() {
+  const [showAlbums, setShowAlbums] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [minimized, setMinimized] = useState(false);
+
+  const activeRelease = activeIndex === null ? null : releases[activeIndex];
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowAlbums(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  function playRelease(index) {
+    setActiveIndex(index);
+    setMinimized(false);
+  }
+
+  function previousRelease() {
+    setActiveIndex((current) => {
+      if (current === null) return releases.length - 1;
+      return (current - 1 + releases.length) % releases.length;
+    });
+    setMinimized(false);
+  }
+
+  function nextRelease() {
+    setActiveIndex((current) => {
+      if (current === null) return 0;
+      return (current + 1) % releases.length;
+    });
+    setMinimized(false);
+  }
+
+  return (
+    <main className="page">
+      <div
+        className="imageBackground"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      />
+
+      <div className="threeLayer">
+        <ThreeBackground />
+      </div>
+
+      <header className="logoWrap">
+        <img src={logoImage} alt="Tirful logo" className="topLogo" />
+
+        <div className="logoGlitchScratch">
+          <span />
+          <span />
+          <span />
+        </div>
+      </header>
+
+      <section className="terminal">
+        <div className="top">
+          <span>MICROSOFT DOS 3.1</span>
+          <span>■</span>
+        </div>
+
+        <div className="screen">
+          {showAlbums ? (
+            <AlbumPage activeIndex={activeIndex} onPlayRelease={playRelease} />
+          ) : (
+            <BootText />
+          )}
+        </div>
+      </section>
+
+      {activeRelease && (
+        <FloatingWin31Player
+          release={activeRelease}
+          currentIndex={activeIndex}
+          total={releases.length}
+          minimized={minimized}
+          onPrevious={previousRelease}
+          onNext={nextRelease}
+          onMinimize={() => setMinimized(true)}
+          onRestore={() => setMinimized(false)}
+          onClose={() => {
+            setActiveIndex(null);
+            setMinimized(false);
+          }}
+        />
+      )}
+    </main>
+  );
+}
