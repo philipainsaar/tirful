@@ -28,10 +28,14 @@ function NeonOrb() {
   const orbRef = useRef(null);
 
   useFrame(({ clock }) => {
-    if (!orbRef.current) return;
-    const pulse = 1 + Math.sin(clock.elapsedTime * 1.0) * 0.06;
-    orbRef.current.scale.set(pulse, pulse, pulse);
-  });
+      if (!orbRef.current) return;
+
+        const pulse = 1 + Math.sin(clock.elapsedTime * 1.8) * 0.06;
+          orbRef.current.scale.set(pulse, pulse, pulse);
+
+            orbRef.current.rotation.y += 0.01;
+              orbRef.current.rotation.x += 0.003;
+              });
 
   return (
     <mesh ref={orbRef} position={[0, 0, 0]}>
