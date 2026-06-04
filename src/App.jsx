@@ -435,7 +435,7 @@ function BootText() {
       <p>WIN31MP.EXE&nbsp;&nbsp; BANDCAMP.BAT</p>
       <br />
       <p>C:\&gt; RUN WIN31MP</p>
-      <p>LOADING SLIM BANDCAMP PLAYER...</p>
+      <p>LOADING BANDCAMP PLAYER...</p>
       <p className="blink">_</p>
     </div>
   );
@@ -448,7 +448,7 @@ function SlimBottomPlayer({ release, onClose }) {
     <div className="slimPlayerWindow">
       <div className="slimPlayerTitleBar">
         <span className="winPlayerMenuBox" />
-        <span className="slimPlayerTitle">Bandcamp Player - {release.name}</span>
+        <span className="slimPlayerTitle">{release.name}</span>
 
         <a
           className="slimOpenLink"
@@ -465,14 +465,14 @@ function SlimBottomPlayer({ release, onClose }) {
           onClick={onClose}
           aria-label="Close player"
         >
-          ×
+        ☒
         </button>
       </div>
 
       <div className="slimEmbedWrap">
         <iframe
           className="slimBandcampPlayer"
-          title={`Bandcamp player for ${release.name}`}
+          title={`for ${release.name}`}
           src={release.embedUrl}
           seamless="seamless"
           allow="autoplay"
@@ -487,7 +487,7 @@ function AlbumPage({ activeIndex, onPlayRelease }) {
     <div className="albumPage">
       <div className="albumIntro">
         <p className="albumHeader">C:\&gt; TIRFUL_PLAYER</p>
-        <p className="albumSub">OPEN PLAYER loads Bandcamp in a slim bottom window.</p>
+        <p className="albumSub">loads Bandcamp in a bottom window.</p>
       </div>
 
       <div className="albumGrid">
@@ -514,7 +514,7 @@ function AlbumPage({ activeIndex, onPlayRelease }) {
                 type="button"
                 onClick={() => onPlayRelease(index)}
               >
-                OPEN PLAYER
+                ▶ PLAY
               </button>
             </div>
           </article>
