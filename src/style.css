@@ -300,7 +300,7 @@ p {
   align-items: center;
   gap: 8px;
   padding: 0 6px;
-  background: linear-gradient(90deg, #000080, #1084d0);
+  background: (90deg, #000080 0%, #1084d0 0%,);
   color: #fff;
   font-weight: bold;
   font-size: 0.78em;
@@ -372,13 +372,8 @@ iframe[src*="bandcamp.com"] {
         }
         /* Hover state */
         iframe[src*="bandcamp.com"]:hover {
-                filter: opacity(100%);         /* Restores full color on hover */
+                filter: opacity(100%);
         }
-
-        /* Hover state */
-        .slimBandcampPlayer:hover {
-            opacity: 100%;
-                }
 
 @keyframes blink {
   50% {
