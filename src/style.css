@@ -283,7 +283,7 @@ p {
   transform: translateX(-50%);
   z-index: 30;
   width: min(92vw, 760px);
-  background: #c0c0c0;
+  background-color: rgba(0, 0, 0, 0.2);
   color: #000;
   text-shadow: none;
   border: 2px solid #d6f7ff;
@@ -354,7 +354,6 @@ p {
   padding: 4px;
   background-color: rgba(0, 0, 0, 0.1);
   border-top: 2px inset #777;
-  opacity: 0%;
 }
 
 .slimBandcampPlayer {
