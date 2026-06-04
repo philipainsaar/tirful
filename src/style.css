@@ -352,7 +352,7 @@ p {
 
 .slimEmbedWrap {
   padding: 4px;
-  background-color: rgba(0, 0, 0, 0.0);
+  background-color: rgba(0, 0, 0, 0.5);
   border-top: 2px inset #777;
 }
 
@@ -361,12 +361,18 @@ p {
   height: 120px;
   border: 0;
   display: block;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.0);
 }
 
+/* Base state */
 iframe[src*="bandcamp.com"] {
-      filter: opacity(80%);
-      }
+    transition: all 0.3s ease;
+        filter: opacity(70%);
+        }
+        /* Hover state */
+        iframe[src*="bandcamp.com"]:hover {
+                filter: opacity(100%);         /* Restores full color on hover */
+        }
 
 @keyframes blink {
   50% {
