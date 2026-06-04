@@ -300,12 +300,11 @@ p {
   align-items: center;
   gap: 8px;
   padding: 0 6px;
-  background: (90deg, #000080, #1084d0);
+  background: (90deg, #000080 0%, #1084d0 0%);
   color: #fff;
   font-weight: bold;
   font-size: 0.78em;
   user-select: none;
-  opacity: 50%;
 }
 
 .winPlayerMenuBox {
