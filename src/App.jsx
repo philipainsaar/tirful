@@ -20,7 +20,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/album/unilateral-workflow',
     cover: '/images/covers/unilateral-workflow.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/album=3207621954/size=small/bgcol=ffffff/linkcol=0687f5/tracklist=true/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/album=3207621954/size=small/bgcol=ffffff/linkcol=0687f5/tracklist=true/artwork=small/transparent=true/seamless',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
