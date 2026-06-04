@@ -283,7 +283,7 @@ p {
   transform: translateX(-50%);
   z-index: 30;
   width: min(92vw, 760px);
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
   color: #000;
   text-shadow: none;
   border: 2px solid #d6f7ff;
@@ -352,7 +352,7 @@ p {
 
 .slimEmbedWrap {
   padding: 4px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.0);
   border-top: 2px inset #777;
 }
 
@@ -365,7 +365,7 @@ p {
 }
 
 iframe[src*="bandcamp.com"] {
-      filter: opacity(10%);
+      filter: opacity(80%);
       }
 
 @keyframes blink {
