@@ -365,7 +365,7 @@ p {
 }
 
 iframe[src*="bandcamp.com"] {
-      filter: sepia(80%) opacity(40%);
+      filter: opacity(10%);
       }
 
 @keyframes blink {
