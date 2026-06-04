@@ -30,7 +30,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/straight-from-the-can',
     cover: '/images/covers/straight-from-the-can.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=149509746/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=149509746/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -40,7 +40,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/gorbinos-quest',
     cover: '/images/covers/gorbinos-quest.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=576207098/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=576207098/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -50,7 +50,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/primordial-sludge',
     cover: '/images/covers/primordial-sludge.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=3851790619/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=3851790619/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -60,7 +60,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/all-you-want-to-hear',
     cover: '/images/covers/all-you-want-to-hear.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=778678908/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=778678908/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -70,7 +70,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/projected-sins',
     cover: '/images/covers/projected-sins.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=2353183252/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=2353183252/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -80,7 +80,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/album/same-places-different-endings',
     cover: '/images/logo.png',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/album=3260983734/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/album=3260983734/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -90,7 +90,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/ynynmhnh',
     cover: '/images/covers/ynynmhnh.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=4294218096/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=4294218096/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -100,7 +100,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/twisting-light',
     cover: '/images/covers/twisting-light.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=678391349/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=678391349/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -110,7 +110,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/album/2-days-away',
     cover: '/images/covers/2-days-away.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/album=472756539/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/album=472756539/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -120,7 +120,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/album/error',
     cover: '/images/covers/error.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/album=3117184652/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/album=3117184652/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -130,7 +130,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/razorbladez',
     cover: '/images/covers/razorbladez.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=234314278/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=234314278/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -140,7 +140,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/not-joined',
     cover: '/images/covers/not-joined.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=100176574/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=100176574/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -150,7 +150,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/no-interface-2',
     cover: '/images/covers/no-interface.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=2204686771/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=2204686771/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -160,7 +160,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/the-sun-feels-colder',
     cover: '/images/covers/the-sun-feels-colder.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=285289752/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=285289752/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -170,7 +170,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/ill-work-it-out-in-my-way',
     cover: '/images/covers/ill-work-it-out-in-my-way.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=888650209/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=888650209/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -180,7 +180,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/any-easy-intimacy',
     cover: '/images/covers/any-easy-intimacy.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=2334350329/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=2334350329/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -190,7 +190,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/album/fragmented-and-lost',
     cover: '/images/covers/fragmented-and-lost.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/album=936361839/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/album=936361839/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -200,7 +200,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/who-you-really-were',
     cover: '/images/covers/who-you-really-were.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=948271045/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=948271045/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -210,7 +210,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/before-i-knew',
     cover: '/images/covers/before-i-knew.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=4074488612/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=4074488612/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -220,7 +220,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/goodbye',
     cover: '/images/covers/goodbye.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=3842785507/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=3842785507/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -230,7 +230,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/album/fragments-of-loss',
     cover: '/images/covers/fragments-of-loss.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/album=1327757472/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/album=1327757472/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -240,7 +240,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/allysin',
     cover: '/images/covers/allysin.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=1119227384/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=1119227384/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -250,7 +250,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/barely-a-chance',
     cover: '/images/covers/barely-a-chance.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=1479601724/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=1479601724/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -260,7 +260,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/koume',
     cover: '/images/covers/koume.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=1403161770/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=1403161770/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -270,7 +270,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/debris-slide',
     cover: '/images/covers/debris-slide.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=2561265051/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=2561265051/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -280,7 +280,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/wish-yourself-away',
     cover: '/images/covers/wish-yourself-away.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=2344296227/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=2344296227/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -290,7 +290,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/you-turned-away',
     cover: '/images/covers/you-turned-away.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=3937048583/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=3937048583/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -300,7 +300,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/field-of-being',
     cover: '/images/covers/field-of-being.jpg',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=459115388/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=459115388/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
@@ -310,7 +310,7 @@ const releases = [
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/be-there',
     cover: '/images/logo.png',
-    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=2251432630/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/',
+    embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=2251432630/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
     durationSeconds: 180
