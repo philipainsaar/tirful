@@ -364,6 +364,10 @@ p {
   background: #001122;
 }
 
+iframe[src*="bandcamp.com"] {
+      filter: grayscale(100%) opacity(80%);
+      }
+
 @keyframes blink {
   50% {
     opacity: 0;
