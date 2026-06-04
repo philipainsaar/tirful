@@ -305,6 +305,7 @@ p {
   font-weight: bold;
   font-size: 0.78em;
   user-select: none;
+  opacity: 50%;
 }
 
 .winPlayerMenuBox {
