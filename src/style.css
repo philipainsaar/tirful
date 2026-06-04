@@ -375,6 +375,11 @@ iframe[src*="bandcamp.com"] {
                 filter: opacity(100%);         /* Restores full color on hover */
         }
 
+        /* Hover state */
+        .slimBandcampPlayer:hover {
+            opacity: 100%;
+                }
+
 @keyframes blink {
   50% {
     opacity: 0;
