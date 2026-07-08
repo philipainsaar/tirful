@@ -319,6 +319,34 @@ const releases = [
   }
 ];
 
+const linkIcons = [
+  {
+    label: "Bandcamp",
+    shortLabel: "BC",
+    href: "https://tirful.bandcamp.com/"
+  },
+  {
+    label: "Spotify",
+    shortLabel: "SP",
+    href: "https://open.spotify.com/artist/5wh9QhNjDHu546xgz3LqRF"
+  },
+  {
+    label: "YouTube",
+    shortLabel: "YT",
+    href: "https://www.youtube.com/c/tirful"
+  },
+  {
+    label: "SoundCloud",
+    shortLabel: "SC",
+    href: "https://soundcloud.com/tirful"
+  },
+  {
+    label: "Instagram",
+    shortLabel: "IG",
+    href: "https://www.instagram.com/tirful/"
+  }
+];
+
 function SynthwaveGrid() {
   const gridRef = useRef(null);
 
@@ -484,6 +512,29 @@ function SlimBottomPlayer({ release, onClose }) {
   );
 }
 
+function LinkIconGrid() {
+  return (
+    <nav className="linkIconGrid" aria-label="Tirful links">
+      {linkIcons.map((item) => (
+        <a
+          className="linkIconButton"
+          href={item.href}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Open Tirful on ${item.label}`}
+          title={item.label}
+          key={item.label}
+        >
+          <span className="linkIconGlyph" aria-hidden="true">
+            {item.shortLabel}
+          </span>
+          <span className="linkIconText">{item.label}</span>
+        </a>
+      ))}
+    </nav>
+  );
+}
+
 function AlbumPage({ activeIndex, onPlayRelease }) {
   return (
     <div className="albumPage">
@@ -565,20 +616,24 @@ export default function TirfulSite() {
         </div>
       </header>
 
-      <section className="terminal">
-        <div className="top">
-          <span>TIRFUL</span>
-          <span>■</span>
-        </div>
+<div className="terminalStack">
+  <section className="terminal">
+    <div className="top">
+      <span>TIRFUL</span>
+      <span>■</span>
+    </div>
 
-        <div className="screen">
-          {showAlbums ? (
-            <AlbumPage activeIndex={activeIndex} onPlayRelease={playRelease} />
-          ) : (
-            <BootText />
-          )}
-        </div>
-      </section>
+    <div className="screen">
+      {showAlbums ? (
+        <AlbumPage activeIndex={activeIndex} onPlayRelease={playRelease} />
+      ) : (
+        <BootText />
+      )}
+    </div>
+  </section>
+
+  <LinkIconGrid />
+</div>
 
       {activeRelease && (
         <SlimBottomPlayer

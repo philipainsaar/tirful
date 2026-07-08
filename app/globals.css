@@ -108,10 +108,18 @@ body,
     logoJitter 0.18s steps(2) infinite;
 }
 
-.terminal {
+.terminalStack {
   z-index: 2;
   width: 84vw;
   max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.terminal {
+  width: 100%;
   height: min(66svh, 570px);
   min-height: 470px;
   background: #b2c4e7a8;
@@ -124,6 +132,75 @@ body,
     inset 0 0 35px #89d3f866;
   backdrop-filter: blur(3px);
   overflow: hidden;
+}
+
+.linkIconGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.linkIconButton {
+  min-width: 0;
+  height: 66px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 4px;
+  border: 2px solid #8ed7fb;
+  background: #b2c4e7a8;
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow: 0 0 8px #00ccff;
+  box-shadow:
+    0 0 18px #008cff,
+    0 0 38px #98b6f2,
+    inset 0 0 24px #89d3f866;
+  backdrop-filter: blur(3px);
+  overflow: hidden;
+  transition:
+    transform 0.16s ease,
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.linkIconButton:hover,
+.linkIconButton:focus-visible {
+  transform: translateY(-2px);
+  border-color: #ffffff;
+  background: #c6d8f3c2;
+  box-shadow:
+    0 0 25px #00ccff,
+    0 0 58px #98b6f2,
+    inset 0 0 28px #ffffff55;
+  outline: none;
+}
+
+.linkIconGlyph {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 0.82em;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  box-shadow:
+    0 0 12px #00ccff,
+    inset 0 0 10px #ffffff44;
+}
+
+.linkIconText {
+  max-width: 100%;
+  padding: 0 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.72em;
+  font-weight: bold;
 }
 
 .top {
@@ -443,13 +520,35 @@ iframe[src*="bandcamp.com"] {
     width: min(68vw, 340px);
   }
 
-  .terminal {
-    width: 82vw;
-    max-width: 420px;
-    height: 54svh;
-    min-height: 390px;
-    margin-top: 58px;
-  }
+.terminalStack {
+  width: 82vw;
+  max-width: 420px;
+  margin-top: 58px;
+  gap: 10px;
+}
+
+.terminal {
+  height: 54svh;
+  min-height: 390px;
+}
+
+.linkIconGrid {
+  gap: 7px;
+}
+
+.linkIconButton {
+  height: 56px;
+}
+
+.linkIconGlyph {
+  width: 28px;
+  height: 28px;
+  font-size: 0.72em;
+}
+
+.linkIconText {
+  font-size: 0.58em;
+}
 
   .screen {
     height: calc(100% - 39px);
