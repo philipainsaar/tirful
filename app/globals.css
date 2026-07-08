@@ -567,10 +567,16 @@ iframe[src*="bandcamp.com"] {
 
 .helpPopupBody {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   padding: 16px;
-  font-size: clamp(13px, 2.1vw, 16px);
-  line-height: 1.4;
+  font-size: clamp(12px, 2.1vw, 15px);
+  line-height: 1.55;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
+  max-height: min(58svh, 420px);
+  overflow-y: auto;
 }
 
 .helpPopupBody p {

@@ -558,14 +558,28 @@ function BandcampHelpPopup({ onClose }) {
           </button>
         </div>
 
-        <div className="helpPopupBody">
-          <p>
-            Tirful's roots are in the underground screamo scene, as the vocalist of bands Cassus and Tellus Effluentia. 
-            He continues this DIY ethos with Tirful - self recording and releasing all his own music. 
-            Diagnosed as an adult with autism and ADHD, his lyrical themes often explore loneliness, alienation and introspection. 
-            Processing new perspectives on his past while simultaneously reevaluating the core of his identity has inevitably fed into the songwriting – pushing his music in unexpected and exciting new directions.
-          </p>
-        </div>
+<div className="helpPopupBody">
+  <p>
+    Tirful&apos;s roots are in the underground screamo scene, as the vocalist
+    of bands Cassus and Tellus Effluentia.
+  </p>
+
+  <p>
+    He continues this DIY ethos with Tirful, self-recording and releasing all
+    his own music.
+  </p>
+
+  <p>
+    Diagnosed as an adult with autism and ADHD, his lyrical themes often
+    explore loneliness, alienation, and introspection.
+  </p>
+
+  <p>
+    Processing new perspectives on his past while reevaluating the core of his
+    identity has inevitably fed into the songwriting, pushing his music in
+    unexpected and exciting new directions.
+  </p>
+</div>
       </section>
     </div>
   );
