@@ -554,7 +554,7 @@ function BandcampHelpPopup({ onClose }) {
         onClick={(event) => event.stopPropagation()}
       >
         <div className="helpPopupTitleBar">
-          <span>TIRFUL DESCRIPTION</span>
+          <span>TIRFUL</span>
 
           <button
             className="helpPopupClose"
