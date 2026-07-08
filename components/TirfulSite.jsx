@@ -709,6 +709,7 @@ export default function TirfulSite() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const [helpOpen, setHelpOpen] = useState(false);
+  const [terminalOpen, setTerminalOpen] = useState(true);
 
   const activeRelease = activeIndex === null ? null : releases[activeIndex];
 
@@ -717,7 +718,14 @@ export default function TirfulSite() {
   }
 
   return (
-    <main className="page">
+    <main
+  className={`page ${terminalOpen ? "" : "pageTerminalClosed"}`}
+  onClick={() => {
+    if (!terminalOpen) {
+      setTerminalOpen(true);
+    }
+  }}
+>
       <div
         className="imageBackground"
         style={{ backgroundImage: `url(${backgroundImage})` }}
@@ -737,28 +745,47 @@ export default function TirfulSite() {
         </div>
       </header>
 
-<div className="terminalStack">
-  <section className="terminal">
-    <div className="top">
-      <span>TIRFUL</span>
-      <span>■</span>
-    </div>
+{terminalOpen && (
+  <div
+    className="terminalStack"
+    onClick={(event) => event.stopPropagation()}
+  >
+    <section className="terminal">
+      <div className="top">
+        <span>TIRFUL</span>
 
-    <div className="screen">
-      {showAlbums ? (
-        <AlbumPage
-  activeIndex={activeIndex}
-  onPlayRelease={playRelease}
-  onOpenHelp={() => setHelpOpen(true)}
-/>
-      ) : (
-        <BootText onComplete={() => setShowAlbums(true)} />
-      )}
-    </div>
-  </section>
+        <button
+          className="terminalCloseButton"
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            setTerminalOpen(false);
+            setHelpOpen(false);
+            setActiveIndex(null);
+          }}
+          aria-label="Close album window"
+          title="Close"
+        >
+          ■
+        </button>
+      </div>
 
-  <LinkIconGrid />
-</div>
+      <div className="screen">
+        {showAlbums ? (
+          <AlbumPage
+            activeIndex={activeIndex}
+            onPlayRelease={playRelease}
+            onOpenHelp={() => setHelpOpen(true)}
+          />
+        ) : (
+          <BootText onComplete={() => setShowAlbums(true)} />
+        )}
+      </div>
+    </section>
+
+    <LinkIconGrid />
+  </div>
+)}
 
 {helpOpen && <BandcampHelpPopup onClose={() => setHelpOpen(false)} />}
 
