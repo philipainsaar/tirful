@@ -321,28 +321,28 @@ const releases = [
 
 const linkIcons = [
   {
-    label: "Bandcamp",
-    shortLabel: "BC",
+    label: "Bandcamp Merch",
+    iconSrc: "/images/icons/merch.png",
     href: "https://tirful.bandcamp.com/"
   },
   {
     label: "Spotify",
-    shortLabel: "SP",
+    iconSrc: "/images/icons/spotify.png",
     href: "https://open.spotify.com/artist/5wh9QhNjDHu546xgz3LqRF"
   },
   {
-    label: "YouTube",
-    shortLabel: "YT",
-    href: "https://www.youtube.com/c/tirful"
+    label: "Apple Music",
+    iconSrc: "/images/icons/apple-music.png",
+    href: "https://music.apple.com/artist/tirful/1514930730"
   },
   {
     label: "SoundCloud",
-    shortLabel: "SC",
+    iconSrc: "/images/icons/soundcloud.png",
     href: "https://soundcloud.com/tirful"
   },
   {
     label: "Instagram",
-    shortLabel: "IG",
+    iconSrc: "/images/icons/instagram.png",
     href: "https://www.instagram.com/tirful/"
   }
 ];
@@ -525,10 +525,14 @@ function LinkIconGrid() {
           title={item.label}
           key={item.label}
         >
-          <span className="linkIconGlyph" aria-hidden="true">
-            {item.shortLabel}
+          <span className="linkIconImageWrap" aria-hidden="true">
+            <img
+              className="linkIconImage"
+              src={item.iconSrc}
+              alt=""
+              loading="lazy"
+            />
           </span>
-          <span className="linkIconText">{item.label}</span>
         </a>
       ))}
     </nav>

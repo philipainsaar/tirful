@@ -178,19 +178,28 @@ body,
   outline: none;
 }
 
-.linkIconGlyph {
+.linkIconImageWrap {
   width: 34px;
   height: 34px;
   display: grid;
   place-items: center;
   border: 1px solid currentColor;
   border-radius: 50%;
-  font-size: 0.82em;
-  font-weight: bold;
-  letter-spacing: 0.04em;
+  background: rgba(255, 255, 255, 0.18);
   box-shadow:
     0 0 12px #00ccff,
     inset 0 0 10px #ffffff44;
+  overflow: hidden;
+}
+
+.linkIconImage {
+  width: 62%;
+  height: 62%;
+  object-fit: contain;
+  display: block;
+  filter:
+    drop-shadow(0 0 4px #00ccff)
+    drop-shadow(0 0 8px #ffffff);
 }
 
 .linkIconText {
@@ -540,14 +549,13 @@ iframe[src*="bandcamp.com"] {
   height: 56px;
 }
 
-.linkIconGlyph {
+.linkIconImageWrap {
   width: 28px;
   height: 28px;
-  font-size: 0.72em;
 }
 
 .linkIconText {
-  font-size: 0.58em;
+  display: none;
 }
 
   .screen {
