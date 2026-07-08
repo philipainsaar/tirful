@@ -545,7 +545,7 @@ function BandcampHelpPopup({ onClose }) {
     <div className="helpPopupOverlay" role="dialog" aria-modal="true">
       <section className="helpPopupWindow">
         <div className="helpPopupTitleBar">
-          <span>TIRFUL DESCRIPTION</span>
+          <span>TIRFUL</span>
 
           <button
             className="helpPopupClose"
