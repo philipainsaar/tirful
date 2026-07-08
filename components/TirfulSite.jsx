@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
@@ -79,7 +81,7 @@ const releases = [
     name: 'Same Places, Different Endings',
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/album/same-places-different-endings',
-    cover: '/images/logo.png',
+    cover: '/images/covers/same-places-different-endings.jpg',
     embedUrl: 'https://bandcamp.com/EmbeddedPlayer/album=3260983734/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
@@ -309,7 +311,7 @@ const releases = [
     name: 'Be There',
     artist: "Tirful",
     url: 'https://tirful.bandcamp.com/track/be-there',
-    cover: '/images/logo.png',
+    cover: '/images/covers/be-there.jpg',
     embedUrl: 'https://bandcamp.com/EmbeddedPlayer/track=2251432630/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=small/transparent=true/',
     lyrics: "",
     syncedLyrics: [],
@@ -524,7 +526,7 @@ function AlbumPage({ activeIndex, onPlayRelease }) {
   );
 }
 
-export default function App() {
+export default function TirfulSite() {
   const [showAlbums, setShowAlbums] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
 
