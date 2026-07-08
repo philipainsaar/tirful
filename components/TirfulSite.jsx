@@ -323,7 +323,7 @@ const linkIcons = [
   {
     label: "Bandcamp Merch",
     iconSrc: "/images/icons/merch.png",
-    href: "https://tirful.bandcamp.com/"
+    href: "https://tirful.bandcamp.com/merch/"
   },
   {
     label: "Spotify",
@@ -457,14 +457,14 @@ function ThreeBackground() {
 function BootText() {
   return (
     <div className="bootText">
-      <p>Microsoft MS-DOS Version 3.10</p>
-      <p>Copyright Microsoft Corp 1981-1985.</p>
+      <p>TIRFUL Version 3.10</p>
+      <p>Copyright TIRFUL 2020-NOW.</p>
       <br />
       <p>C:\&gt; DIR</p>
       <p>TIRFUL.EXE&nbsp;&nbsp;&nbsp;&nbsp; PLAYER.DB</p>
       <p>WIN31MP.EXE&nbsp;&nbsp; BANDCAMP.BAT</p>
       <br />
-      <p>C:\&gt; RUN WIN31MP</p>
+      <p>C:\&gt; RUN TIRFUL_PLAYER.BAT</p>
       <p>LOADING BANDCAMP PLAYER...</p>
       <p className="blink">_</p>
     </div>

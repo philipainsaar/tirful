@@ -179,8 +179,8 @@ body,
 }
 
 .linkIconImageWrap {
-  width: 34px;
-  height: 34px;
+  width: 68px;
+  height: 68px;
   display: grid;
   place-items: center;
   border: 1px solid currentColor;
@@ -550,8 +550,8 @@ iframe[src*="bandcamp.com"] {
 }
 
 .linkIconImageWrap {
-  width: 28px;
-  height: 28px;
+  width: 68px;
+  height: 68px;
 }
 
 .linkIconText {
