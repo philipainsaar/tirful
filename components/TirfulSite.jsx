@@ -347,8 +347,6 @@ const linkIcons = [
   }
 ];
 
-const [helpOpen, setHelpOpen] = useState(false);
-
 function SynthwaveGrid() {
   const gridRef = useRef(null);
 
@@ -631,6 +629,8 @@ function AlbumPage({ activeIndex, onPlayRelease, onOpenHelp }) {
 export default function TirfulSite() {
   const [showAlbums, setShowAlbums] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
+
+  const [helpOpen, setHelpOpen] = useState(false);
 
   const activeRelease = activeIndex === null ? null : releases[activeIndex];
 
