@@ -464,9 +464,15 @@ iframe[src*="bandcamp.com"] {
 
 
 .albumSubWithHelp {
-  display: inline-flex;
+  width: 100%;
+  display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.albumSubWithHelp span {
+  flex: 1;
+  min-width: 0;
 }
 
 .helpIconButton {
