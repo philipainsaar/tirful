@@ -15,7 +15,7 @@
     "three": "latest"
   },
   "devDependencies": {},
-  "engines": {
-    "node": ">=20.9.0"
-  }
+"engines": {
+  "node": "22.x"
+}
 }
