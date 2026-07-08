@@ -300,7 +300,7 @@ p {
   align-items: center;
   gap: 8px;
   padding: 0 6px;
-  background: linear-gradient(90deg, #000080 50%, #1084d0 50%);
+  background: linear-gradient(90deg, #1084d0 50%, #1084d0 50%);
   color: #fff;
   font-weight: bold;
   font-size: 0.78em;
