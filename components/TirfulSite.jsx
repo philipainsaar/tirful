@@ -660,7 +660,7 @@ export default function TirfulSite() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowAlbums(true);
-    }, 1000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
