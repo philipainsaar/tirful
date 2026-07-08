@@ -454,19 +454,50 @@ function ThreeBackground() {
   );
 }
 
-function BootText() {
+function BootText({ onComplete }) {
+  const fullText = [
+    "TIRFUL Version 3.10",
+    "Copyright TIRFUL 2020-NOW.",
+    "",
+    "C:\\> DIR",
+    "TIRFUL.EXE     PLAYER.DB",
+    "WIN31MP.EXE   BANDCAMP.BAT",
+    "",
+    "C:\\> RUN TIRFUL_PLAYER.BAT",
+    "LOADING BANDCAMP PLAYER..."
+  ].join("\n");
+
+  const [typedText, setTypedText] = useState("");
+  const [isDone, setIsDone] = useState(false);
+
+  useEffect(() => {
+    let index = 0;
+
+    const typeTimer = window.setInterval(() => {
+      index += 1;
+      setTypedText(fullText.slice(0, index));
+
+      if (index >= fullText.length) {
+        window.clearInterval(typeTimer);
+        setIsDone(true);
+
+        const completeTimer = window.setTimeout(() => {
+          onComplete?.();
+        }, 900);
+
+        return () => window.clearTimeout(completeTimer);
+      }
+    }, 28);
+
+    return () => window.clearInterval(typeTimer);
+  }, [fullText, onComplete]);
+
   return (
     <div className="bootText">
-      <p>TIRFUL Version 3.10</p>
-      <p>Copyright TIRFUL 2020-NOW.</p>
-      <br />
-      <p>C:\&gt; DIR</p>
-      <p>TIRFUL.EXE&nbsp;&nbsp;&nbsp;&nbsp; PLAYER.DB</p>
-      <p>WIN31MP.EXE&nbsp;&nbsp; BANDCAMP.BAT</p>
-      <br />
-      <p>C:\&gt; RUN TIRFUL_PLAYER.BAT</p>
-      <p>LOADING BANDCAMP PLAYER...</p>
-      <p className="blink">_</p>
+      <pre>
+        {typedText}
+        <span className={isDone ? "blink" : ""}>_</span>
+      </pre>
     </div>
   );
 }
@@ -657,14 +688,6 @@ export default function TirfulSite() {
 
   const activeRelease = activeIndex === null ? null : releases[activeIndex];
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowAlbums(true);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   function playRelease(index) {
     setActiveIndex(index);
   }
@@ -705,7 +728,7 @@ export default function TirfulSite() {
   onOpenHelp={() => setHelpOpen(true)}
 />
       ) : (
-        <BootText />
+        <BootText onComplete={() => setShowAlbums(true)} />
       )}
     </div>
   </section>

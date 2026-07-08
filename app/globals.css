@@ -584,6 +584,24 @@ iframe[src*="bandcamp.com"] {
 }
 
 
+.bootText {
+  width: 100%;
+  height: 100%;
+}
+
+.bootText pre {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  text-shadow: inherit;
+  white-space: pre-wrap;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+
 
 @keyframes blink {
   50% {
