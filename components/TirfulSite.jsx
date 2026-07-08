@@ -581,7 +581,7 @@ function LinkIconGrid() {
   );
 }
 
-function TerminalTypeText({ text, speed = 16 }) {
+function TerminalTypeText({ text, speed = 12 }) {
   const [typedText, setTypedText] = useState("");
 
   useEffect(() => {
