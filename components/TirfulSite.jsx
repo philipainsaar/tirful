@@ -567,7 +567,7 @@ export default function TirfulSite() {
 
       <section className="terminal">
         <div className="top">
-          <span>MICROSOFT DOS 3.1</span>
+          <span>TIRFUL</span>
           <span>■</span>
         </div>
 
