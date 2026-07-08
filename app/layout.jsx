@@ -2,7 +2,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "Tirful",
-  description: "Tirful DOS terminal music player with a Three.js neon background."
+  description: "Tirful – pushing his music in unexpected and exciting new directions."
 };
 
 export const viewport = {
