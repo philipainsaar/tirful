@@ -1,51 +1,33 @@
 # Tirful Next.js + Three.js
 
-Converted from the original Vite React site to a Next.js App Router project while keeping the existing DOS terminal UI, album grid, Bandcamp player, image assets, and Three.js neon background.
+Converted from the original Vite React project to Next.js App Router while keeping the existing DOS terminal UI, album grid, Bandcamp embeds, images, GIF background, and Three.js neon scene.
 
-## Run locally
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open the local URL that Next.js prints in the terminal.
+Open http://localhost:3000.
 
-## Build
+## Production build
 
 ```bash
 npm run build
 npm run start
 ```
 
-## Main files
+## Vercel deployment notes
 
-```txt
-app/layout.jsx              Next.js root layout and metadata
-app/page.jsx                Home page
-app/globals.css             Converted global CSS from the original site
-components/TirfulSite.jsx   Existing React/Three.js site as a client component
-public/backgrounds/         Existing background assets
-public/images/              Existing logo and cover images
-```
+This repository includes `vercel.json` to force the project preset to Next.js, because the previous Vercel project may still be using old Vite settings.
 
-## Replacing images
+Recommended Vercel settings:
 
-Background:
+- Framework Preset: Next.js
+- Build Command: `npm run build`
+- Output Directory: leave empty / do not override
+- Install Command: `npm install`
+- Root Directory: repository root, unless this project is inside a subfolder
 
-```txt
-public/backgrounds/dos-bg.gif
-```
-
-Logo:
-
-```txt
-public/images/logo.png
-```
-
-If you change filenames, update these lines in `components/TirfulSite.jsx`:
-
-```js
-const backgroundImage = "/backgrounds/dos-bg.gif";
-const logoImage = "/images/logo.png";
-```
+If Vercel still says it is looking for `dist`, go to Project Settings → Build & Development Settings and turn off Output Directory override.
