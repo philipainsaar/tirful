@@ -347,6 +347,8 @@ const linkIcons = [
   }
 ];
 
+const [helpOpen, setHelpOpen] = useState(false);
+
 function SynthwaveGrid() {
   const gridRef = useRef(null);
 
@@ -539,12 +541,57 @@ function LinkIconGrid() {
   );
 }
 
-function AlbumPage({ activeIndex, onPlayRelease }) {
+
+function BandcampHelpPopup({ onClose }) {
+  return (
+    <div className="helpPopupOverlay" role="dialog" aria-modal="true">
+      <section className="helpPopupWindow">
+        <div className="helpPopupTitleBar">
+          <span>TIRFUL DESCRIPTION</span>
+
+          <button
+            className="helpPopupClose"
+            type="button"
+            onClick={onClose}
+            aria-label="Close popup"
+            title="Close"
+          >
+            ■
+          </button>
+        </div>
+
+        <div className="helpPopupBody">
+          <p>
+            Tirful's roots are in the underground screamo scene, as the vocalist of bands Cassus and Tellus Effluentia. 
+            He continues this DIY ethos with Tirful - self recording and releasing all his own music. 
+            Diagnosed as an adult with autism and ADHD, his lyrical themes often explore loneliness, alienation and introspection. 
+            Processing new perspectives on his past while simultaneously reevaluating the core of his identity has inevitably fed into the songwriting – pushing his music in unexpected and exciting new directions.
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+
+function AlbumPage({ activeIndex, onPlayRelease, onOpenHelp }) {
   return (
     <div className="albumPage">
       <div className="albumIntro">
         <p className="albumHeader">C:\&gt; TIRFUL_PLAYER</p>
-        <p className="albumSub">loads Bandcamp in a bottom window.</p>
+        <p className="albumSub albumSubWithHelp">
+  <span>loads Bandcamp in a bottom window.</span>
+
+  <button
+    className="helpIconButton"
+    type="button"
+    onClick={onOpenHelp}
+    aria-label="Show Tirful description"
+    title="Help"
+  >
+    ?
+  </button>
+</p>
       </div>
 
       <div className="albumGrid">
@@ -629,7 +676,11 @@ export default function TirfulSite() {
 
     <div className="screen">
       {showAlbums ? (
-        <AlbumPage activeIndex={activeIndex} onPlayRelease={playRelease} />
+        <AlbumPage
+  activeIndex={activeIndex}
+  onPlayRelease={playRelease}
+  onOpenHelp={() => setHelpOpen(true)}
+/>
       ) : (
         <BootText />
       )}
@@ -638,6 +689,8 @@ export default function TirfulSite() {
 
   <LinkIconGrid />
 </div>
+
+{helpOpen && <BandcampHelpPopup onClose={() => setHelpOpen(false)} />}
 
       {activeRelease && (
         <SlimBottomPlayer

@@ -460,6 +460,119 @@ iframe[src*="bandcamp.com"] {
                 filter: opacity(100%);
         }
 
+
+
+
+.albumSubWithHelp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.helpIconButton {
+  width: 22px;
+  height: 22px;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  background: #b2c4e7cc;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  text-shadow: 0 0 8px #00ccff;
+  box-shadow:
+    0 0 10px #008cff,
+    inset 0 0 8px #ffffff55;
+}
+
+.helpIconButton:hover,
+.helpIconButton:focus-visible {
+  background: #c6d8f3;
+  color: #ffffff;
+  box-shadow:
+    0 0 16px #00ccff,
+    inset 0 0 10px #ffffff88;
+  outline: none;
+}
+
+.helpPopupOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  pointer-events: auto;
+}
+
+.helpPopupWindow {
+  width: min(84vw, 420px);
+  background: #b2c4e7dd;
+  border: 2px solid #8ed7fb;
+  color: #ffffff;
+  text-shadow: 0 0 8px #00ccff;
+  box-shadow:
+    0 0 25px #008cff,
+    0 0 70px #98b6f2,
+    inset 0 0 35px #89d3f866;
+  backdrop-filter: blur(4px);
+}
+
+.helpPopupTitleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: linear-gradient(90deg, #aad5ff, #8ec1fc);
+  color: #ffffff;
+  padding: 8px 10px;
+  font-weight: bold;
+}
+
+.helpPopupClose {
+  width: 24px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #ffffff;
+  background: #b2c4e7;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 0 0 8px #00ccff;
+  box-shadow:
+    0 0 10px #008cff,
+    inset 0 0 8px #ffffff66;
+}
+
+.helpPopupClose:hover,
+.helpPopupClose:focus-visible {
+  background: #ffffff55;
+  outline: none;
+}
+
+.helpPopupBody {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  font-size: clamp(13px, 2.1vw, 16px);
+  line-height: 1.4;
+}
+
+.helpPopupBody p {
+  margin: 0;
+}
+
+
+
 @keyframes blink {
   50% {
     opacity: 0;
@@ -617,4 +730,14 @@ iframe[src*="bandcamp.com"] {
   .slimPlayerTitleBar {
     font-size: 0.68em;
   }
+
+.helpPopupWindow {
+  width: 84vw;
+}
+
+.helpPopupBody {
+  padding: 14px;
+  font-size: 12px;
+}
+
 }
