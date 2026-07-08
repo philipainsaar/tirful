@@ -347,6 +347,16 @@ const linkIcons = [
   }
 ];
 
+const tirfulDescriptionText = [
+  "Tirful's roots are in the underground screamo scene, as the vocalist of bands Cassus and Tellus Effluentia.",
+  "",
+  "He continues this DIY ethos with Tirful, self-recording and releasing all his own music.",
+  "",
+  "Diagnosed as an adult with autism and ADHD, his lyrical themes often explore loneliness, alienation, and introspection.",
+  "",
+  "Processing new perspectives on his past while reevaluating the core of his identity has inevitably fed into the songwriting, pushing his music in unexpected and exciting new directions."
+].join("\n");
+
 function SynthwaveGrid() {
   const gridRef = useRef(null);
 
@@ -571,6 +581,39 @@ function LinkIconGrid() {
   );
 }
 
+function TerminalTypeText({ text, speed = 18 }) {
+  const [typedText, setTypedText] = useState("");
+
+  useEffect(() => {
+    setTypedText("");
+
+    let index = 0;
+    let timerId;
+
+    function typeNextCharacter() {
+      index += 1;
+      setTypedText(text.slice(0, index));
+
+      if (index < text.length) {
+        timerId = window.setTimeout(typeNextCharacter, speed);
+      }
+    }
+
+    timerId = window.setTimeout(typeNextCharacter, speed);
+
+    return () => {
+      window.clearTimeout(timerId);
+    };
+  }, [text, speed]);
+
+  return (
+    <pre className="terminalTypeText">
+      {typedText}
+      <span className="blink">_</span>
+    </pre>
+  );
+}
+
 
 function BandcampHelpPopup({ onClose }) {
   return (
@@ -598,28 +641,9 @@ function BandcampHelpPopup({ onClose }) {
           </button>
         </div>
 
-        <div className="helpPopupBody">
-          <p>
-            Tirful&apos;s roots are in the underground screamo scene, as the
-            vocalist of bands Cassus and Tellus Effluentia.
-          </p>
-
-          <p>
-            He continues this DIY ethos with Tirful, self-recording and
-            releasing all his own music.
-          </p>
-
-          <p>
-            Diagnosed as an adult with autism and ADHD, his lyrical themes
-            often explore loneliness, alienation, and introspection.
-          </p>
-
-          <p>
-            Processing new perspectives on his past while reevaluating the core
-            of his identity has inevitably fed into the songwriting, pushing his
-            music in unexpected and exciting new directions.
-          </p>
-        </div>
+<div className="helpPopupBody">
+  <TerminalTypeText text={tirfulDescriptionText} speed={16} />
+</div>
       </section>
     </div>
   );
