@@ -2,10 +2,12 @@
   "name": "tirful-next-three",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@react-three/fiber": "9.6.1",
@@ -14,8 +16,7 @@
     "react-dom": "19.2.7",
     "three": "0.185.1"
   },
-  "devDependencies": {},
   "engines": {
-    "node": ">=20.9.0"
+    "node": "22.x"
   }
 }
